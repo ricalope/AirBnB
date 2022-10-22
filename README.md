@@ -2,6 +2,7 @@
 
 ## Database Schema Design
 
+<img width="742" alt="airbnb_dbdiagram" src="https://user-images.githubusercontent.com/102694854/197365260-23d5aab2-7ef5-4da9-87b6-843155ed7db7.png">
 
 
 ## API Documentation
