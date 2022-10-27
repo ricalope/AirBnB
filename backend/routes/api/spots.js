@@ -51,7 +51,7 @@ const validateReview = [
    handleValidationErrors
 ]
 
-router.get('/current', async (req, res, next) => {
+router.get('/current', requireAuth, async (req, res, next) => {
    const userSpots = await Spot.findAll({
       where: { ownerId: req.user.id },
       // where: { ownerId: 1 }, // <<----- just for testing locally
@@ -247,6 +247,16 @@ router.get('/', async (req, res, next) => {
    if (page > 0 && size > 0) {
       pagination.limit = size;
       pagination.offset = size * (page - 1);
+   } else if (page <= 0 && size <= 0) {
+      res.status(400)
+      return res.json({
+         message: "Validation Error",
+         statusCode: 400,
+         errors: {
+            page: "Page must be greater than or equal to 1",
+            size: "Size must be greater than or equal to 1"
+         }
+      });
    }
 
    const allSpots = await Spot.findAll({

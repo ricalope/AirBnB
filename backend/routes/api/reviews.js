@@ -40,10 +40,8 @@ router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
    }
 
    const newImage = await ReviewImage.create({ reviewId: review.id, url });
-   const newReviewImage = await ReviewImage.findByPk(newImage.id, {
-      attributes: [ 'id', 'url' ]
-   });
-   return res.status(201).json(newReviewImage)
+   
+   return res.status(201).json(newImage)
 });
 
 router.get('/current', requireAuth, async (req, res) => {
