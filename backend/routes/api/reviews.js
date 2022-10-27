@@ -97,7 +97,10 @@ router.delete('/:reviewId', requireAuth, async (req, res, next) => {
       });
    }
    await review.destroy();
-   return res.json({ message: "Successfully deleted" });
+   return res.json({
+      message: "Successfully deleted",
+      statusCode: 200
+   });
 });
 
 module.exports = router;
