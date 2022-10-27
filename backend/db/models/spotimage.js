@@ -27,6 +27,18 @@ module.exports = (sequelize, DataTypes) => {
          attributes: {
             exclude: ['createdAt', 'updatedAt']
          }
+      },
+      hooks: {
+         afterCreate: (record) => {
+            delete record.dataValues.spotId
+            delete record.dataValues.createdAt
+            delete record.dataValues.updatedAt
+         },
+         afterUpdate: (record) => {
+            delete record.dataValues.spotId
+            delete record.dataValues.createdAt
+            delete record.dataValues.updatedAt
+         }
       }
    });
    return SpotImage;

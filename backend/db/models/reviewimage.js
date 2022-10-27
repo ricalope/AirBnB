@@ -22,6 +22,18 @@ module.exports = (sequelize, DataTypes) => {
    }, {
       sequelize,
       modelName: 'ReviewImage',
+      hooks: {
+         afterCreate: (record) => {
+            delete record.dataValues.reviewId
+            delete record.dataValues.createdAt
+            delete record.dataValues.updatedAt
+         },
+         afterUpdate: (record) => {
+            delete record.dataValues.reviewId
+            delete record.dataValues.createdAt
+            delete record.dataValues.updatedAt
+         }
+      }
    });
    return ReviewImage;
 };
