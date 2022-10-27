@@ -237,11 +237,24 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
 });
 
 router.get('/', async (req, res, next) => {
+   let { page, size } = req.query;
+   page = (page === undefined) ? 1 : parseInt(page);
+   size = (size === undefined) ? 20 : parseInt(size);
+
+   const pagination = {}
+   if (page > 10) page = 10;
+   if (size > 20) size = 20;
+   if (page > 0 && size > 0) {
+      pagination.limit = size;
+      pagination.offset = size * (page - 1);
+   }
+
    const allSpots = await Spot.findAll({
       include: [
          { model: SpotImage },
          { model: Review }
-      ]
+      ],
+      ...pagination
    });
 
    const Spots = []
@@ -264,7 +277,7 @@ router.get('/', async (req, res, next) => {
       delete spot.SpotImages
    });
 
-   return res.json({ Spots })
+   return res.json({ Spots, page, size })
 });
 
 router.post('/', validateSpot, requireAuth, async (req, res, next) => {
