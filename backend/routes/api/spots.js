@@ -148,7 +148,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
          statusCode: 404
       });
    }
-   
+
    let Bookings;
    if (req.user.id === spot.ownerId) {
       Bookings = await Booking.findAll({
