@@ -4,7 +4,8 @@ import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
    const dispatch = useDispatch();
-   const [showMenu, setShowMenu] = useState(false);
+   const [ showMenu, setShowMenu ] = useState(false);
+   console.log(user)
 
    const openMenu = () => {
       if (showMenu) return;
@@ -18,7 +19,7 @@ function ProfileButton({ user }) {
       }
       document.addEventListener("click", closeMenu);
       return () => document.removeEventListener("click", closeMenu);
-   }, [showMenu]);
+   }, [ showMenu ]);
 
    const logout = (e) => {
       e.preventDefault();
@@ -28,7 +29,9 @@ function ProfileButton({ user }) {
    return (
       <>
          <button onClick={openMenu}>
-         <i className="fa-thin fa-circle-user" />
+            <div id="font-button">
+               <i className="fa-solid fa-user" />
+            </div>
          </button>
          {showMenu && (
             <ul className="profile-dropdown">
