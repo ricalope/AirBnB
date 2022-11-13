@@ -19,6 +19,12 @@ function LoginForm() {
          });
    }
 
+   const demoUserLogin = () => {
+      setCredential("Demo-lition")
+      setPassword("password")
+      return dispatch(sessionActions.login({ credential, password }))
+   }
+
    return (
       <div className="container">
          <form onSubmit={handleSubmit}>
@@ -43,7 +49,10 @@ function LoginForm() {
                   required
                />
             </label>
-            <button type="submit">Log In</button>
+            <div className="button-div">
+               <button type="submit">Log In</button>
+               <button onClick={demoUserLogin}>Demo User</button>
+            </div>
          </form>
       </div>
    );
