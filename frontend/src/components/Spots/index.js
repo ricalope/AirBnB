@@ -22,7 +22,7 @@ function Spots() {
                      <NavLink to={`/spots/${spot.id}`}>
                         <img src={spot.previewImage} className="spot-image" alt={spot.name} />
                         <h4>{`${spot.city}, ${spot.state}`}</h4>
-                        <p>{`$${spot.price.toFixed()} night`}</p>
+                        <p>{`$${spot.price} night`}</p>
                      </NavLink>
                   </nav>
                </div>
