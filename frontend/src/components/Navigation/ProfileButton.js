@@ -5,7 +5,6 @@ import * as sessionActions from '../../store/session';
 function ProfileButton({ user }) {
    const dispatch = useDispatch();
    const [ showMenu, setShowMenu ] = useState(false);
-   console.log(user)
 
    const openMenu = () => {
       if (showMenu) return;
@@ -29,7 +28,7 @@ function ProfileButton({ user }) {
    return (
       <>
          <button onClick={openMenu}>
-            <div id="font-button">
+            <div id="profile-button">
                <i className="fa-solid fa-user" />
             </div>
          </button>

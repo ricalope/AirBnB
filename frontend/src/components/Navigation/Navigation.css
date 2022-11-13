@@ -1,20 +1,25 @@
-/* nav {
-   display: flex;
-   justify-content: flex-end;
-   margin-right: 40px;
+#root {
+   box-sizing: border-box;
+}
 
+.nav-bar {
+   display: flex;
+   justify-content: center;
+   /* border: 1px solid blue; */
+   margin-bottom: 5px;
+   justify-content: space-between;
 }
 
 ul {
-   display: flex;
-   flex-direction: column;
+   list-style-type: none;
 }
 
-li {
+.nav-right {
    display: flex;
-   flex-direction: column;
+   justify-content: space-between;
+   margin: 10px;
 }
 
-button {
-
-} */
+.profile-button {
+   margin-left: 10px;
+}

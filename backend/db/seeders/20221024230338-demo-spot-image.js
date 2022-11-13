@@ -34,7 +34,7 @@ module.exports = {
          },
          {
             spotId: 5,
-            url: 'https://www.istockphoto.com/photo/corn-flag-paint-a-rustic-picture-in-rural-iowa-gm484404202-71237747?phrase=iowa%20corn%20field',
+            url: 'https://www.familyhandyman.com/wp-content/uploads/2017/08/Wee-House-Arado-Courtesy-of-Alchemy-Architects.jpg?w=1200',
             preview: true
          }
       ], {});

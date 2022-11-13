@@ -63,7 +63,7 @@ module.exports = {
          {
             ownerId: 3,
             address: '444 N farming way',
-            city: 'Boise',
+            city: 'Des Moines',
             state: 'Iowa',
             country: 'USA',
             lat: 91,
