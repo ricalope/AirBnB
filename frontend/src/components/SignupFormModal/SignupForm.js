@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './SignupForm.css';
 
-function SignupFormPage() {
+function SignupForm() {
    const dispatch = useDispatch();
-   const sessionUser = useSelector(state => state.session.user);
+   // const sessionUser = useSelector(state => state.session.user);
 
-   const [email, setEmail] = useState('');
-   const [username, setUsername] = useState('');
-   const [password, setPassword] = useState('');
-   const [firstName, setFirstName] = useState('');
-   const [lastName, setLastName] = useState('');
-   const [confirmPassword, setConfirmPassword] = useState('');
-   const [errors, setErrors] = useState([]);
+   const [ email, setEmail ] = useState('');
+   const [ username, setUsername ] = useState('');
+   const [ password, setPassword ] = useState('');
+   const [ firstName, setFirstName ] = useState('');
+   const [ lastName, setLastName ] = useState('');
+   const [ confirmPassword, setConfirmPassword ] = useState('');
+   const [ errors, setErrors ] = useState([]);
 
-   if (sessionUser) return <Redirect to="/" />;
+   // if (sessionUser) return <Redirect to="/" />;
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -29,12 +28,12 @@ function SignupFormPage() {
             lastName,
             password
          }))
-         .catch(async (res) => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-         })
+            .catch(async (res) => {
+               const data = await res.json();
+               if (data && data.errors) setErrors(data.errors);
+            })
       }
-      return setErrors(['Confirm Password field must be the same as the Password field']);
+      return setErrors([ 'Confirm Password field must be the same as the Password field' ]);
    }
 
    return (
@@ -103,4 +102,4 @@ function SignupFormPage() {
    );
 }
 
-export default SignupFormPage;
+export default SignupForm;

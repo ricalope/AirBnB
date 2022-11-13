@@ -1,0 +1,25 @@
+#root {
+   box-sizing: border-box;
+}
+
+.nav-bar {
+   display: flex;
+   justify-content: center;
+   /* border: 1px solid blue; */
+   margin-bottom: 5px;
+   justify-content: space-between;
+}
+
+ul {
+   list-style-type: none;
+}
+
+.nav-right {
+   display: flex;
+   justify-content: space-between;
+   margin: 10px;
+}
+
+.profile-button {
+   margin-left: 10px;
+}
