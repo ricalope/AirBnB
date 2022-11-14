@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
 #root {
    box-sizing: border-box;
+}
+
+h1 {
+   font-family: 'Cookie';
+   font-size: 40px;
+   color: white;
+   text-shadow: -1px 0 #4b86b4, 0 2px #4b86b4, 1px 0 #4b86b4, 0 -1px #4b86b4
 }
 
 .nav-bar {
@@ -8,6 +17,19 @@
    /* border: 1px solid blue; */
    margin-bottom: 5px;
    justify-content: space-between;
+   border-bottom: 1px solid #e2e2e2;
+   max-height: 80px;
+}
+
+.nav-center {
+   display: flex;
+   align-items: center;
+   align-content: center;
+}
+
+.logo {
+   margin-top: 20px;
+   margin-right: 20px;
 }
 
 ul {
