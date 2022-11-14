@@ -2,7 +2,8 @@ import { csrfFetch } from './csrf';
 
 const GET_SPOTS = 'spots/getSpots';
 const ADD_SPOT = 'spots/addSpot';
-const ADD_IMAGE = 'spots/addSpotImage'
+const ADD_IMAGE = 'spots/addSpotImage';
+const GET_ONE_SPOT = 'spot/getOneSpot';
 
 const getSpots = spots => ({
    type: GET_SPOTS,
@@ -14,10 +15,16 @@ const addSpot = spot => ({
    spot
 })
 
-const addSpotImage = (url, spotId) => ({
+const addSpotImage = (spotId, url, preview) => ({
    type: ADD_IMAGE,
+   spotId,
    url,
-   spotId
+   preview
+})
+
+const getOneSpot = spot => ({
+   type: GET_ONE_SPOT,
+   spot
 })
 
 export const getAllSpots = () => async dispatch => {
@@ -42,20 +49,30 @@ export const addNewSpot = newSpot => async dispatch => {
    }
 }
 
-export const addNewSpotImage = (url, spotId) => async dispatch => {
+export const addNewSpotImage = data => async dispatch => {
+   const { spotId, url, preview } = data;
    const res = await csrfFetch(`/api/spots/${spotId}/images`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(url)
+      body: JSON.stringify({ spotId, url, preview })
    });
    if (res.ok) {
       const newSpotImage = await res.json();
-      dispatch(addSpotImage(url, spotId));
+      dispatch(addSpotImage(spotId, url, preview));
       return newSpotImage;
    }
 }
 
-const initialState = { allSpots: {} };
+export const getSpotDetails = spotId => async dispatch => {
+   const res = await fetch(`/api/spots/${spotId}`);
+   if (res.ok) {
+      const oneSpot = await res.json();
+      dispatch(getOneSpot(oneSpot));
+      return oneSpot
+   }
+}
+
+const initialState = { allSpots: {}, oneSpot: {} };
 
 export default function SpotsReducer(state = initialState, action) {
    switch(action.type) {
@@ -75,6 +92,11 @@ export default function SpotsReducer(state = initialState, action) {
       case ADD_IMAGE: {
          const newState = { ...state, allSpots: { ...state.allSpots } }
          newState.allSpots[action.spotId].previewImage = action.url
+         return newState;
+      }
+      case GET_ONE_SPOT: {
+         const newState = { ...state, allSpots: { ...state.allSpots }, oneSpot: { ...state.oneSpot } }
+         newState.oneSpot = action.spot
          return newState;
       }
       default:

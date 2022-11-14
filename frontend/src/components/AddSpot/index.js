@@ -49,7 +49,7 @@ function AddSpot() {
       }
       const addedSpot = await dispatch(addNewSpot(formValues))
       if (addedSpot) {
-         dispatch(addNewSpotImage(imageUrl, addedSpot.id))
+         dispatch(addNewSpotImage({ spotId: addedSpot.id, url: imageUrl, preview: true }))
          history.push(`/spots/${addedSpot.id}`);
       }
       setAddress("");
