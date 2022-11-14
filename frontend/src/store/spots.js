@@ -50,12 +50,12 @@ export const addNewSpotImage = (url, spotId) => async dispatch => {
    });
    if (res.ok) {
       const newSpotImage = await res.json();
-      dispatch(addSpotImage(newSpotImage));
+      dispatch(addSpotImage(url, spotId));
       return newSpotImage;
    }
 }
 
-const initialState = { allSpots: {}, oneSpot: {} };
+const initialState = { allSpots: {} };
 
 export default function SpotsReducer(state = initialState, action) {
    switch(action.type) {
@@ -73,8 +73,8 @@ export default function SpotsReducer(state = initialState, action) {
          return newState;
       }
       case ADD_IMAGE: {
-         const newState = { ...state, allSpots: { ...state.allSpots }, oneSpot: { ...state.oneSpot } }
-         newState.oneSpot[action.url.id] = action.url
+         const newState = { ...state, allSpots: { ...state.allSpots } }
+         newState.allSpots[action.spotId].previewImage = action.url
          return newState;
       }
       default:
