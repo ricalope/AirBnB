@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import logo from '../../assets/android-chrome-512x512.png';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -12,7 +13,10 @@ function Navigation({ isLoaded }) {
    let sessionLinks;
    if (sessionUser) {
       sessionLinks = (
-         <ProfileButton user={sessionUser} />
+         <>
+            <ProfileButton user={sessionUser} />
+            <NavLink to="/spots/new">Create a spot</NavLink>
+         </>
       );
    } else {
       sessionLinks = (
@@ -26,10 +30,17 @@ function Navigation({ isLoaded }) {
    return (
       <nav className="nav-bar">
          <div className="nav-left">
-
+            {/* <NavLink to="/spots/new">
+               Create a spot
+            </NavLink> */}
          </div>
          <div className="nav-center">
-            <h1>Tiny Hub</h1>
+            <img
+               className="logo"
+               src={logo}
+               alt="tiny-hub-logo"
+               style={{ width: 40, height: 40 }} />
+            <h1>tiny hub</h1>
          </div>
          <div className="nav-right">
             <ul>

@@ -31,7 +31,11 @@
    border-radius: 5px;
 }
 
-img {
+.spots-card:active {
+   box-shadow: none;
+}
+
+img.spot-image {
    width: 200px;
    height: 200px;
    align-self: flex-start;
