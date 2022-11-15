@@ -3,9 +3,8 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './SignupForm.css';
 
-function SignupForm() {
+function SignupForm({ setShowModal }) {
    const dispatch = useDispatch();
-   // const sessionUser = useSelector(state => state.session.user);
 
    const [ email, setEmail ] = useState('');
    const [ username, setUsername ] = useState('');
@@ -14,8 +13,6 @@ function SignupForm() {
    const [ lastName, setLastName ] = useState('');
    const [ confirmPassword, setConfirmPassword ] = useState('');
    const [ errors, setErrors ] = useState([]);
-
-   // if (sessionUser) return <Redirect to="/" />;
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -28,6 +25,7 @@ function SignupForm() {
             lastName,
             password
          }))
+            .then(() => setShowModal(false))
             .catch(async (res) => {
                const data = await res.json();
                if (data && data.errors) setErrors(data.errors);

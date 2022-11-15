@@ -18,17 +18,18 @@ h1 {
    margin-bottom: 5px;
    justify-content: space-between;
    border-bottom: 1px solid #e2e2e2;
-   max-height: 80px;
+   height: auto;
+   max-height: 70px;
 }
 
-.nav-center {
+div.nav-center {
    display: flex;
    align-items: center;
    align-content: center;
 }
 
 .logo {
-   margin-top: 20px;
+   /* margin-top: 20px; */
    margin-right: 20px;
 }
 
@@ -42,17 +43,21 @@ ul {
    margin: 10px;
 }
 
-.profile-button {
-   margin-left: 10px;
-}
 
-.nav-home {
+
+/* .nav-home {
    display: flex;
    flex-direction: row;
-}
+} */
 
 li#home-button {
    display: flex;
    background-color: white;
-   
+
+}
+
+.profile-dropdown {
+   position: absolute;
+   right: 5px;
+   top: 5px;
 }
