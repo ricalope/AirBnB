@@ -6,6 +6,7 @@ import OneSpot from './components/OneSpot';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import AddSpot from './components/AddSpot';
+import EditSpot from './components/EditSpot';
 
 function App() {
    const dispatch = useDispatch();
@@ -28,6 +29,12 @@ function App() {
                </Route>
                <Route exact path="/spots/:spotId">
                   <OneSpot />
+               </Route>
+               <Route exact path="/spots/:spotId/edit">
+                  <EditSpot />
+               </Route>
+               <Route>
+                  <h2>Page Not Found</h2>
                </Route>
             </Switch>
          )}

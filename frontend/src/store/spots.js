@@ -4,6 +4,7 @@ const GET_SPOTS = 'spots/getSpots';
 const ADD_SPOT = 'spots/addSpot';
 const ADD_IMAGE = 'spots/addSpotImage';
 const GET_ONE_SPOT = 'spot/getOneSpot';
+const DELETE_SPOT = 'spot/deleteSpot';
 
 const getSpots = spots => ({
    type: GET_SPOTS,
@@ -25,6 +26,11 @@ const addSpotImage = (spotId, url, preview) => ({
 const getOneSpot = spot => ({
    type: GET_ONE_SPOT,
    spot
+})
+
+const deleteSpot = spotId => ({
+   type: DELETE_SPOT,
+   spotId
 })
 
 export const getAllSpots = () => async dispatch => {
@@ -72,6 +78,28 @@ export const getSpotDetails = spotId => async dispatch => {
    }
 }
 
+export const editSpotDetails = (spot, spotId) => async dispatch => {
+   const res = await csrfFetch(`/api/spots/${spotId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(spot)
+   });
+   if (res.ok) {
+      const editedSpot = res.json();
+      dispatch(addSpot(editedSpot));
+      return editedSpot;
+   }
+}
+
+export const deleteOneSpot = spotId => async dispatch => {
+   const res = await csrfFetch(`/api/spots/${spotId}`, {
+      method: "DELETE"
+   });
+   if (res.ok) {
+      dispatch(deleteSpot(spotId));
+   }
+}
+
 const initialState = { allSpots: {}, oneSpot: {} };
 
 export default function SpotsReducer(state = initialState, action) {
@@ -97,6 +125,11 @@ export default function SpotsReducer(state = initialState, action) {
       case GET_ONE_SPOT: {
          const newState = { ...state, allSpots: { ...state.allSpots }, oneSpot: { ...state.oneSpot } }
          newState.oneSpot = action.spot
+         return newState;
+      }
+      case DELETE_SPOT: {
+         const newState = { ...state, allSpots: { ...state.allSpots } }
+         delete newState.allSpots[action.spotId]
          return newState;
       }
       default:

@@ -43,13 +43,6 @@ ul {
    margin: 10px;
 }
 
-
-
-/* .nav-home {
-   display: flex;
-   flex-direction: row;
-} */
-
 li#home-button {
    display: flex;
    background-color: white;
@@ -60,4 +53,6 @@ li#home-button {
    position: absolute;
    right: 5px;
    top: 5px;
+   background-color: white;
+   width: 200px;
 }

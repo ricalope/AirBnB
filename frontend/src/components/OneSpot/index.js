@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSpotDetails } from '../../store/spots';
 
@@ -14,9 +14,6 @@ function OneSpot() {
    }, [dispatch, spotId]);
 
    const spot = useSelector(state => state.spots.oneSpot);
-   if (spot.avgStarRating === undefined){
-
-   }
 
    if (!isLoaded) return null;
 
@@ -30,6 +27,7 @@ function OneSpot() {
          </div>
          <div>
             <p className="spot-description">{spot.description}</p>
+            <Link to={`/spots/${spot.id}/edit`}>edit hub</Link>
          </div>
       </div>
    );

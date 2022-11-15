@@ -43,7 +43,7 @@ function Navigation({ isLoaded }) {
             <h1>tiny hub</h1>
          </div>
          <div className="nav-right">
-
+            <NavLink to="/spots/new">Create a Tiny Hub</NavLink>
          </div>
       </nav>
    );
