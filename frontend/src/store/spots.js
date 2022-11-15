@@ -102,7 +102,7 @@ export const deleteOneSpot = spotId => async dispatch => {
 
 const initialState = { allSpots: {}, oneSpot: {} };
 
-export default function SpotsReducer(state = initialState, action) {
+export default function spotsReducer(state = initialState, action) {
    switch(action.type) {
       case GET_SPOTS: {
          const newState = { ...state }

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSpotDetails } from '../../store/spots';
+import Reviews from '../Reviews';
 
 function OneSpot() {
    const [isLoaded, setIsLoaded] = useState(false)
@@ -29,6 +30,11 @@ function OneSpot() {
             <p className="spot-description">{spot.description}</p>
             <Link exact to={`/spots/${spot.id}/edit`}>edit hub</Link>
             <Link exact to={`/spots/${spot.id}/delete`}>delete hub</Link>
+         </div>
+         <div className="spot-reviews">
+            <NavLink to={`/spots/${spot.id}/reviews`}>
+               <Reviews spotId={spotId} />
+            </NavLink>
          </div>
       </div>
    );
