@@ -56,3 +56,13 @@ li#home-button {
    background-color: white;
    width: 200px;
 }
+
+button.profile-button {
+   background-color: white;
+   border: none;
+   cursor: pointer;
+}
+
+i.fa-solid {
+   color: #4b86b4;
+}

@@ -27,7 +27,8 @@ function OneSpot() {
          </div>
          <div>
             <p className="spot-description">{spot.description}</p>
-            <Link to={`/spots/${spot.id}/edit`}>edit hub</Link>
+            <Link exact to={`/spots/${spot.id}/edit`}>edit hub</Link>
+            <Link exact to={`/spots/${spot.id}/delete`}>delete hub</Link>
          </div>
       </div>
    );
