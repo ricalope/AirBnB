@@ -18,7 +18,9 @@ function Navigation({ isLoaded }) {
          <div className="nav-left">
             <ul>
                <li id="home-button">
-                  <NavLink className="nav-home" exact to="/">Home</NavLink>
+                  <NavLink className="nav-home" exact to="/">
+                  <i className="fa-sharp fa-solid fa-house"></i>
+                  </NavLink>
                   {isLoaded && (
                      <ProfileButton
                         user={sessionUser}
@@ -43,7 +45,7 @@ function Navigation({ isLoaded }) {
             <h1>tiny hub</h1>
          </div>
          <div className="nav-right">
-
+            <NavLink to="/spots/new">Create a Tiny Hub</NavLink>
          </div>
       </nav>
    );

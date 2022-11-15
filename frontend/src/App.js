@@ -6,6 +6,9 @@ import OneSpot from './components/OneSpot';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import AddSpot from './components/AddSpot';
+import EditSpot from './components/EditSpot';
+import DeleteSpot from './components/DeleteSpot';
+import Reviews from './components/Reviews';
 
 function App() {
    const dispatch = useDispatch();
@@ -28,6 +31,18 @@ function App() {
                </Route>
                <Route exact path="/spots/:spotId">
                   <OneSpot />
+               </Route>
+               <Route exact path="/spots/:spotId/edit">
+                  <EditSpot />
+               </Route>
+               <Route exact path="/spots/:spotId/delete">
+                  <DeleteSpot />
+               </Route>
+               <Route exact path="/spots/:spotId/reviews">
+                  <Reviews />
+               </Route>
+               <Route>
+                  <h2>Page Not Found</h2>
                </Route>
             </Switch>
          )}
