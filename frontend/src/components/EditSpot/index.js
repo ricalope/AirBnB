@@ -24,8 +24,6 @@ function EditSpot() {
          .then(() => setIsLoaded(true))
    }, [dispatch, isLoaded, spotId]);
 
-   if (!isLoaded) return null;
-
    const onSubmit = async (e) => {
       e.preventDefault();
       setIsLoaded(true);
@@ -47,7 +45,7 @@ function EditSpot() {
       }
    }
 
-   return (
+   return isLoaded && (
       <div>
          <h2>Edit Your Current Hub</h2>
          <form onSubmit={onSubmit}>
