@@ -25,9 +25,9 @@ function Reviews() {
          <div>
             <ul>
                {reviews.map(review => (
-                  <div className="review-container">
-                     <li key={review.id}>{review.review}</li>
-                     <li><p>{`- ${review.User.firstName} ${review.stars} ★`}</p></li>
+                  <div className="review-container" key={review?.id}>
+                     <li>{review?.review}</li>
+                     <li><p>{`- ${review?.User.firstName} ${review?.stars} ★`}</p></li>
                   </div>
                ))}
             </ul>
