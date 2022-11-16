@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
-import { loadSpotReviews, deleteSpotReview } from '../../store/reviews';
+import { loadSpotReviews } from '../../store/reviews';
 
 
 function Reviews() {
@@ -20,9 +20,7 @@ function Reviews() {
          .then(() => setIsLoaded(true))
    }, [ dispatch, spotId ]);
 
-   if (!isLoaded) return null;
-
-   return (
+   return isLoaded && (
       <div>
          <div>
             <h2>user reviews for this hub</h2>
@@ -34,12 +32,12 @@ function Reviews() {
                      {user?.id === review?.userId && (
                         <div>
                            <p>
-                              <Link exact to={`/reviews/${review.id}/edit`}>
+                              <Link to={`/reviews/${review.id}/edit`}>
                                  edit review
                               </Link>
                            </p>
                            <p>
-                              <Link exact to={`/reviews/${review.id}/delete`}>
+                              <Link to={`/reviews/${review.id}/delete`}>
                                  delete review
                               </Link>
                            </p>

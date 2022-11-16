@@ -18,12 +18,10 @@ function OneSpot() {
    const spot = useSelector(state => state.spots.oneSpot);
    const user = useSelector(state => state.session.user);
    const reviewsObj = useSelector(state => state.reviews.spot);
-   
+
    const reviews = Object.values(reviewsObj);
 
-   if (!isLoaded) return null;
-
-   return (
+   return isLoaded && (
       <div>
          <h2>{spot.name}</h2>
          <h5>{`${spot.city}, ${spot.state} ${spot.country}`}</h5>
@@ -35,20 +33,20 @@ function OneSpot() {
             <p className="spot-description">{spot.description}</p>
             {user.id === spot.ownerId && (
                <div>
-                  <Link exact to={`/spots/${spot.id}/edit`}>edit hub</Link>
-                  <Link exact to={`/spots/${spot.id}/delete`}>delete hub</Link>
+                  <Link to={`/spots/${spot.id}/edit`}>edit hub</Link>
+                  <Link to={`/spots/${spot.id}/delete`}>delete hub</Link>
                </div>
             )}
-            <Link exact to={`/spots/${spot.id}/reviews/new`}>add a review</Link>
+            <Link to={`/spots/${spot.id}/reviews/new`}>add a review</Link>
          </div>
          <div className="spot-reviews">
             <ul>
                {reviews.map(review => (
                   <li key={review.id}>
-                     <Link exact="true" to={`/spots/${spot.id}/reviews`}>
+                     <Link to={`/spots/${spot.id}/reviews`}>
                         {review?.review}
                      </Link>
-                     <li><p>{`- ${review?.User.firstName} ${review?.stars} ★`}</p></li>
+                     <p>{`- ${review?.User.firstName} ${review?.stars} ★`}</p>
                   </li>
                ))}
             </ul>
