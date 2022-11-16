@@ -9,6 +9,8 @@ import AddSpot from './components/AddSpot';
 import EditSpot from './components/EditSpot';
 import DeleteSpot from './components/DeleteSpot';
 import Reviews from './components/Reviews';
+import AddReview from './components/AddReview';
+import DeleteReview from './components/Reviews/DeleteReview';
 
 function App() {
    const dispatch = useDispatch();
@@ -40,6 +42,12 @@ function App() {
                </Route>
                <Route exact path="/spots/:spotId/reviews">
                   <Reviews />
+               </Route>
+               <Route exact path="/spots/:spotId/reviews/new">
+                  <AddReview />
+               </Route>
+               <Route exact path="/reviews/:reviewId/delete">
+                  <DeleteReview />
                </Route>
                <Route>
                   <h2>Page Not Found</h2>

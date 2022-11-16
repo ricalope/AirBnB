@@ -7,7 +7,7 @@ function DeleteSpot() {
    const dispatch = useDispatch();
    const history = useHistory();
 
-   const onSubmit = (e) => {
+   const onSubmit = () => {
       dispatch(deleteOneSpot(spotId));
       history.push('/');
    }
