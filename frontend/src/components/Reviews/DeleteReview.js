@@ -14,7 +14,7 @@ function DeleteReview() {
 
    return (
       <div>
-         <h2>confirm delete review</h2>
+         <h2>confirm delete review?</h2>
          <h5>yesterday's reviews<br/>
          we have memories of them<br/>
          but we do not dwell

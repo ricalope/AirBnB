@@ -37,7 +37,9 @@ function OneSpot() {
                   <Link to={`/spots/${spot.id}/delete`}>delete hub</Link>
                </div>
             )}
-            <Link to={`/spots/${spot.id}/reviews/new`}>add a review</Link>
+            {user.id !== spot.ownerId && (
+               <Link to={`/spots/${spot.id}/reviews/new`}>add a review</Link>
+            )}
          </div>
          <div className="spot-reviews">
             <ul>

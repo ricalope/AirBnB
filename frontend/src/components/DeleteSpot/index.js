@@ -15,9 +15,9 @@ function DeleteSpot() {
    return (
       <div>
          <h2>confirm delete spot?</h2>
-         <h5>confirm you would like to delete your hub, <br>
-         </br>you can always make another <br>
-         </br>but this one will be lost to the sands of time</h5>
+         <h5>today was the day<br/>
+         that I had to say goodbye<br/>
+         I will miss this spot</h5>
          <button onClick={onSubmit}>confirm deletion</button>
       </div>
    );
