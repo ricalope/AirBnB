@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSpotDetails } from '../../store/spots';
-import Reviews from '../Reviews';
+import { loadSpotReviews } from '../../store/reviews';
 
 function OneSpot() {
    const [ isLoaded, setIsLoaded ] = useState(false)
@@ -11,11 +11,15 @@ function OneSpot() {
 
    useEffect(() => {
       dispatch(getSpotDetails(spotId))
+      dispatch(loadSpotReviews(spotId))
          .then(() => setIsLoaded(true))
    }, [ dispatch, spotId ]);
 
    const spot = useSelector(state => state.spots.oneSpot);
    const user = useSelector(state => state.session.user);
+   const reviewsObj = useSelector(state => state.reviews.spot);
+   
+   const reviews = Object.values(reviewsObj);
 
    if (!isLoaded) return null;
 
@@ -38,9 +42,16 @@ function OneSpot() {
             <Link exact to={`/spots/${spot.id}/reviews/new`}>add a review</Link>
          </div>
          <div className="spot-reviews">
-            <Link exact to={`/spots/${spot.id}/reviews`}>
-               <Reviews spotId={spotId} />
-            </Link>
+            <ul>
+               {reviews.map(review => (
+                  <li key={review.id}>
+                     <Link exact="true" to={`/spots/${spot.id}/reviews`}>
+                        {review?.review}
+                     </Link>
+                     <li><p>{`- ${review?.User.firstName} ${review?.stars} ★`}</p></li>
+                  </li>
+               ))}
+            </ul>
          </div>
       </div>
    );
