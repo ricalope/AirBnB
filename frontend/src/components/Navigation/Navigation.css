@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 
-#root {
-   box-sizing: border-box;
-}
-
 h1 {
    font-family: 'Cookie';
    font-size: 40px;
@@ -11,18 +7,21 @@ h1 {
    text-shadow: -1px 0 #4b86b4, 0 2px #4b86b4, 1px 0 #4b86b4, 0 -1px #4b86b4
 }
 
+nav >.navbar {
+   margin-bottom: 10px;
+}
+
 .nav-bar {
    display: flex;
    justify-content: center;
    /* border: 1px solid blue; */
-   margin-bottom: 5px;
    justify-content: space-between;
    border-bottom: 1px solid #e2e2e2;
    height: auto;
-   max-height: 70px;
+   height: 10vh;
 }
 
-div.nav-center {
+div.nav-left {
    display: flex;
    align-items: center;
    align-content: center;
@@ -35,12 +34,20 @@ div.nav-center {
 
 ul {
    list-style-type: none;
+   width: 100%;
 }
 
 .nav-right {
    display: flex;
+   justify-content: space-evenly;
+   /* margin: 10px; */
+   width: 15vw;
+}
+
+.nav-right ul {
+   display: flex;
    justify-content: space-between;
-   margin: 10px;
+   align-items: center;
 }
 
 li#home-button {
@@ -49,20 +56,89 @@ li#home-button {
 
 }
 
+.home-button {
+   display: flex;
+   align-self: center;
+   column-gap: 10px;
+}
+
+.prof-btn {
+   display: flex;
+   align-self: flex-end;
+}
+
 .profile-dropdown {
    position: absolute;
-   right: 5px;
-   top: 5px;
+   right: 5vw;
+   top: 6vw;
    background-color: white;
-   width: 200px;
+   width: 20vw;
+   /* border: 1px solid red; */
+   border-radius: 15px;
+   height: fit-content;
+   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 
 button.profile-button {
+   position: relative;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
    background-color: white;
-   border: none;
+   border: 1px solid #4b86b4;
+   margin-top: 5px;
    cursor: pointer;
+   width: 9vw;
+   height: 5vh;
+   border-radius: 25px;
+}
+
+button.profile-button:hover {
+   box-shadow: 1px 1px 2px rgba(0,0,0,0.4),
+   -1px 1px 2px rgba(0,0,0,0.4);
+}
+
+i.fa-circle-user {
+   font-size: 20px;
+   margin-left: 15px;
+   margin-top:3px;
 }
 
 i.fa-solid {
    color: #4b86b4;
+   /* margin: 7px; */
+}
+
+.profile-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   align-content: flex-start;
+   gap: 5px;
+   padding: 1em;
+}
+
+/* .profile-username {
+   display: flex;
+   /* margin-top: 35px; */
+
+
+.profile-logout>li>button {
+   background-color: white;
+   border: none;
+   font-size: 16px;
+   cursor: pointer;
+   text-decoration: underline;
+}
+
+.profile-create {
+   text-decoration: underline;
+}
+
+.profile-login>button,
+.profile-signup>button {
+   background-color: white;
+   border: none;
+   text-decoration: underline;
 }

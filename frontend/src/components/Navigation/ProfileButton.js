@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, NavLink } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user, setLogin, setShowModal }) {
@@ -29,31 +29,55 @@ function ProfileButton({ user, setLogin, setShowModal }) {
    }
 
    return (
-      <div className="parent">
+      <div>
          <button className="profile-button" onClick={openMenu}>
-               <i className="fa-solid fa-user" />
+            <div className="bars">
+               <i className="fa-solid fa-bars" />
+            </div>
+            <div className="user">
+               <i class="fa-solid fa-circle-user" />
+            </div>
          </button>
-         {showMenu && ( user ?
+         {showMenu && (user ?
             <ul className="profile-dropdown">
-               <li>{user.username}</li>
-               <li>{user.email}</li>
-               <li>
-                  <button onClick={logout}>Log Out</button>
-               </li>
+               <div className="profile-container">
+                  <div className="profile-username">
+                     <li>{user.username}</li>
+                  </div>
+                  <div className="profile-email">
+                     <li>{user.email}</li>
+                  </div>
+                  <div className="profile-create">
+                     <li>
+                        <NavLink to="/spots/new">Create a Tiny Hub</NavLink>
+                     </li>
+                  </div>
+                  <div className="profile-logout">
+                     <li>
+                        <button onClick={logout}>Log Out</button>
+                     </li>
+                  </div>
+               </div>
             </ul> :
             <ul className="profile-dropdown">
-               <li>
-                  <button onClick={() => {
-                     setLogin(true)
-                     setShowModal(true)
-                  }}>Log In</button>
-               </li>
-               <li>
-                  <button onClick={() => {
-                     setLogin(false)
-                     setShowModal(true)
-                  }}>Sign Up</button>
-               </li>
+               <div className="profile-container">
+                  <li>
+                     <div className="profile-login">
+                        <button onClick={() => {
+                           setLogin(true)
+                           setShowModal(true)
+                        }}>Log In</button>
+                     </div>
+                  </li>
+                  <li>
+                     <div className="profile-signup">
+                        <button onClick={() => {
+                           setLogin(false)
+                           setShowModal(true)
+                        }}>Sign Up</button>
+                     </div>
+                  </li>
+               </div>
             </ul>
          )}
       </div>

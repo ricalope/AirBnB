@@ -1,13 +1,12 @@
-#root {
-   display: flex;
-   flex-direction: column;
-   box-sizing: border-box;
+html {
+   margin-left: 5vw;
+   margin-right: 5vw;
 }
 
 .outer {
    display: flex;
    /* border: 1px solid red; */
-   padding: 5px;
+   margin-left: 0;
 }
 
 .inner {
@@ -23,12 +22,12 @@
    flex-direction: column;
    /* border: 1px solid black; */
    padding: 10px;
-   margin: 1% 20px;
    justify-content: center;
    flex-wrap: wrap;
    max-width: 220px;
    box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
    border-radius: 5px;
+   margin-bottom: 2vh;
 }
 
 .spots-card:active {
