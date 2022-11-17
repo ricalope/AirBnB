@@ -1,0 +1,45 @@
+.detail-container {
+   display: flex;
+   flex-direction: column;
+   border: 1px solid black;
+   height: 100%;
+   padding: 10px;
+}
+
+.detail-top {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   margin-bottom: 10px;
+   height: 70px;
+}
+
+.detail-top-bottom {
+   display: flex;
+   gap: 20px;
+   font-size: 13px;
+   font-weight: bolder;
+}
+
+.bottom-container {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   /* border: 1px solid red; */
+   border: 1px solid rgba(136, 136, 136, 0.4);
+   margin-top: 10px;
+}
+
+.spot-owner {
+   font-size: 25px;
+}
+
+.spot-description {
+   margin-top: 10px;
+}
+
+
+
+span {
+   color: grey;
+}

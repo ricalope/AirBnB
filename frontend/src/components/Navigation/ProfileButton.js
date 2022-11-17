@@ -35,7 +35,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
                <i className="fa-solid fa-bars" />
             </div>
             <div className="user">
-               <i class="fa-solid fa-circle-user" />
+               <i className="fa-solid fa-circle-user" />
             </div>
          </button>
          {showMenu && (user ?

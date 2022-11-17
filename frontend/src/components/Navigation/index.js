@@ -29,11 +29,11 @@ function Navigation({ isLoaded }) {
          <div className="nav-right">
             <ul>
                <li id="home-button">
-                  <div className="home-button">
-                     <NavLink exact to="/">
+                  <NavLink exact to="/">
+                     <div className="home-button">
                         <i className="fa-sharp fa-solid fa-house"></i>
-                     </NavLink>
-                  </div>
+                     </div>
+                  </NavLink>
                </li>
                <li>
                   <div className="prof-btn">

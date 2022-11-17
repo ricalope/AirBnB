@@ -164,7 +164,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
    return res.json({ Bookings })
 });
 
-router.get('/:spotId/reviews', requireAuth, async (req, res, next) => {
+router.get('/:spotId/reviews', async (req, res, next) => {
    const spot = await Spot.findByPk(req.params.spotId);
    if (!spot) {
       res.status(404)

@@ -19,10 +19,11 @@ function Spots() {
             {spots.map(spot => (
                <div key={spot.id} className="spots-card">
                   <nav>
-                     <NavLink to={`/spots/${spot.id}`}>
-                        <img src={spot.previewImage} className="spot-image" alt={spot.name} />
-                        <h4>{`${spot.city}, ${spot.state}`}</h4>
-                        <p>{`$${spot.price} night`}</p>
+                     <NavLink to={`/spots/${spot?.id}`}>
+                        <img src={spot?.previewImage} className="spot-image" alt={spot.name} />
+                        <h4>{`${spot?.city}, ${spot?.state}`}</h4>
+                        <p>{`$${spot?.price} night`}</p>
+                        <p>{`★ ${spot?.avgRating ? spot.avgRating : 'no reviews yet'}`}</p>
                      </NavLink>
                   </nav>
                </div>
