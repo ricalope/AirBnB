@@ -97,7 +97,7 @@ function OneSpot() {
             )}
             {user?.id !== spot?.ownerId && !existingReview && (
                <div className="add-review">
-                  <Link to={`/spots/${spot?.id}/reviews/new`}>add a review</Link>
+                  <Link to={`/spots/${spot?.id}/reviews/new`}>leave a review</Link>
                </div>
             )}
             <div className="spot-reviews">

@@ -31,8 +31,11 @@
 
 .one-image-div img {
    border-radius: 25px;
-   width: 600px;
+   width: 60%;
    height: 50%;
+}
+
+img.one-image {
    object-fit: cover;
 }
 
@@ -53,6 +56,7 @@
 .spot-description {
    margin-top: 10px;
    padding: 10px;
+   color: grey;
 }
 
 .add-review {
