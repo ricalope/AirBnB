@@ -10,33 +10,12 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }) {
    const sessionUser = useSelector(state => state.session.user);
-   const [showModal, setShowModal] = useState(false);
-   const [login, setLogin] = useState(true);
+   const [ showModal, setShowModal ] = useState(false);
+   const [ login, setLogin ] = useState(true);
 
    return (
       <nav className="nav-bar">
          <div className="nav-left">
-            <ul>
-               <li id="home-button">
-                  <NavLink className="nav-home" exact to="/">
-                  <i className="fa-sharp fa-solid fa-house"></i>
-                  </NavLink>
-                  {isLoaded && (
-                     <ProfileButton
-                        user={sessionUser}
-                        setLogin={setLogin}
-                        setShowModal={setShowModal}
-                     />
-                  )}
-               </li>
-               {showModal && (
-                  <Modal onClose={() => setShowModal(false)}>
-                     {login ? <LoginForm setShowModal={setShowModal} /> : <SignupForm setShowModal={setShowModal} />}
-                  </Modal>
-               )}
-            </ul>
-         </div>
-         <div className="nav-center">
             <img
                className="logo"
                src={logo}
@@ -44,8 +23,35 @@ function Navigation({ isLoaded }) {
                style={{ width: 40, height: 40 }} />
             <h1>tiny hub</h1>
          </div>
+         <div className="nav-center">
+
+         </div>
          <div className="nav-right">
-            <NavLink to="/spots/new">Create a Tiny Hub</NavLink>
+            <ul>
+               <li id="home-button">
+                  <NavLink exact to="/">
+                     <div className="home-button">
+                        <i className="fa-sharp fa-solid fa-house"></i>
+                     </div>
+                  </NavLink>
+               </li>
+               <li>
+                  <div className="prof-btn">
+                     {isLoaded && (
+                        <ProfileButton
+                           user={sessionUser}
+                           setLogin={setLogin}
+                           setShowModal={setShowModal}
+                        />
+                     )}
+                  </div>
+               </li>
+               {showModal && (
+                  <Modal onClose={() => setShowModal(false)}>
+                     {login ? <LoginForm setShowModal={setShowModal} /> : <SignupForm setShowModal={setShowModal} />}
+                  </Modal>
+               )}
+            </ul>
          </div>
       </nav>
    );

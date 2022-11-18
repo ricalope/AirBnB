@@ -138,7 +138,7 @@ function AddSpot() {
             <label>
                Image
                <input
-                  type="text"
+                  type="url"
                   value={imageUrl}
                   onChange={(e) => setImageUrl(e.target.value)}
                />
