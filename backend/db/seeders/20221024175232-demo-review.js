@@ -27,7 +27,7 @@ module.exports = {
          {
             userId: 8,
             spotId: 3,
-            review: "What happens here stays here right, WRONG! The host called me in the middle of the night and told us we had to leave because of quote illegal activity unquote. It's not anyones business what I do in vegas, even the cops.  ",
+            review: "What happens here stays here right, WRONG! The host called me in the middle of the night and told us we had to leave because of quote illegal activity unquote.",
             stars: 1
          },
          {
@@ -75,7 +75,7 @@ module.exports = {
          {
             userId: 6,
             spotId: 1,
-            review: "Beautiful home in a nice quiet neighborhood. We really enjoyed sitting around the fire pit every night and loved the big open kitchen to snack and cook and enjoy each other’s company. Beds were very comfortable. Host was very responsive and welcoming.",
+            review: "Beautiful home in a nice quiet neighborhood. We really enjoyed sitting around the fire pit every night and loved the big open kitchen to snack and cook and enjoy each other’s company.",
             stars: 4
          },
          {
@@ -93,13 +93,13 @@ module.exports = {
          {
             userId: 9,
             spotId: 1,
-            review: "We had a great stay here at your house. Our family vacation was amazing. 6 adults one baby. The house was very clean. The shallow end to the pool was perfect for my 11 month old grandson. The temp was great. ( we obviously paid to heat the pool ) The fire pit wonderful in the evenings. ",
+            review: "We had a great stay here at your house. Our family vacation was amazing. 6 adults one baby. The house was very clean. The shallow end to the pool was perfect for my 11 month old grandson. The temp was great.",
             stars: 5
          },
          {
             userId: 10,
             spotId: 4,
-            review: "Absolutely gorgeous home! We were so comfortable and had access to everything we needed. The pool was phenomenal! We paid to have it heated and it was worth every penny! Nothing beat sitting out back by the fire during the sunrise and sunset. Quiet, safe neighborhood.",
+            review: "Absolutely gorgeous home! We were so comfortable and had access to everything we needed. The pool was phenomenal! We paid to have it heated and it was worth every penny! Nothing beat sitting out back by the fire during the sunrise and sunset.",
             stars: 5
          }
       ], {});

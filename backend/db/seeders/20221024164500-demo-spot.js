@@ -93,7 +93,7 @@ module.exports = {
             lat: 789,
             lng: 10,
             name: 'Le Petit Chateau',
-            description: 'Come visit this tiny castle in the clouds and spend your days taking in the ocean breeze. This hub is the ultimate relaxtion spot. Enjoy the nearby hot spring, and spa for the ultimate relaxing vacation. ',
+            description: 'Come visit this tiny castle in the clouds and spend your days taking in the ocean breeze. This hub is the ultimate relaxtion spot.',
             price: 1000.99
          },
          {
@@ -105,7 +105,7 @@ module.exports = {
             lat: 92,
             lng: 100,
             name: 'Tiny Big Apple',
-            description: 'Imagine staying in the only Tiny Big Apple in America. Overlooking Central Park from a apple shaped tiny home hoisted in the sky. Come to the city that never sleeps and enjoy a great broadway show.',
+            description: 'Imagine staying in the only Tiny Big Apple in America. Overlooking Central Park from a apple shaped tiny home hoisted in the sky.',
             price: 1200.99
          },
          {
