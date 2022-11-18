@@ -99,7 +99,7 @@ module.exports = {
          {
             userId: 10,
             spotId: 4,
-            review: "Absolutely gorgeous home! We were so comfortable and had access to everything we needed. The pool was phenomenal! We paid to have it heated and it was worth every penny! Nothing beat sitting out back by the fire during the sunrise and sunset. Quiet, safe neighborhood. Lauren was excellent at communicating with us and made sure we were happy and comfortable the entire stay. Highly recommend!!!",
+            review: "Absolutely gorgeous home! We were so comfortable and had access to everything we needed. The pool was phenomenal! We paid to have it heated and it was worth every penny! Nothing beat sitting out back by the fire during the sunrise and sunset. Quiet, safe neighborhood.",
             stars: 5
          }
       ], {});
