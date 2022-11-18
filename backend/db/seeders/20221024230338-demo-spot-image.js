@@ -39,7 +39,7 @@ module.exports = {
          },
          {
             spotId: 6,
-            url: 'https://cdn.vox-cdn.com/thumbor/1NX3nvxqHyufNlgldf-8LsTq1_E=/0x0:1400x897/1820x1213/filters:focal(588x336:812x560):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/65893255/small_storage_xl.0.jpg',
+            url: 'https://www.italianbark.com/wp-content/uploads/2020/11/cabin-design-trend-tiny-homes-of-the-future-italianbark-Schermata-2020-11-20-alle-11.06.05.jpg',
             preview: true
          },
          {
