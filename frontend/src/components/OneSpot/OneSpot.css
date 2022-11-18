@@ -6,12 +6,18 @@
    padding: 10px;
 }
 
+.spot-name {
+   font-size: 20px;
+   font-weight: bolder;
+}
+
 .detail-top {
    display: flex;
    flex-direction: column;
    justify-content: space-between;
    margin-bottom: 10px;
-   height: 70px;
+   height: 75px;
+   border: 1px solid pink
 }
 
 .detail-top-bottom {
@@ -21,24 +27,50 @@
    font-weight: bolder;
 }
 
+.detail-image {
+   border: 1px solid green;
+   padding: 5px;
+}
+
+.one-image-div img {
+   border-radius: 25px;
+   width: 600px;
+   height: 50%;
+   object-fit: cover;
+}
+
 .bottom-container {
    display: flex;
    flex-direction: column;
    gap: 10px;
    /* border: 1px solid red; */
-   border: 1px solid rgba(136, 136, 136, 0.4);
+   border-bottom: 1px solid rgba(136, 136, 136, 0.4);
    margin-top: 10px;
 }
 
 .spot-owner {
    font-size: 25px;
+   font-weight: bolder;
+   /* border: 1px solid red; */
+   padding: 10px;
 }
 
 .spot-description {
    margin-top: 10px;
+   /* border: 1px solid green; */
+   padding: 10px;
 }
 
+.add-review {
+   /* border: 1px solid #4b86b4; */
+   padding: 10px;
+   text-decoration: underline;
+}
 
+.spot-reviews {
+   /* border: 1px solid blue; */
+   padding: 10px;
+}
 
 span {
    color: grey;

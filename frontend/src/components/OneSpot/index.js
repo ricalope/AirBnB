@@ -27,11 +27,11 @@ function OneSpot() {
       return isLoaded && (
          <div className="detail-container">
             <div className="detail-top">
-               <div className="spot-name"><h2>{spot?.name}</h2></div>
+               <div className="spot-name">{spot?.name}</div>
                <div className="detail-top-bottom">
                   <div className="spot-rating">
                      <h6>{`★ ${spot?.avgStarRating ? spot?.avgStarRating : ' no reviews for this hub yet.'}`}</h6>
-                     <div>{`${reviews.length} reviews - `}</div>
+                     <div>{`${reviews.length} reviews`}</div>
                   </div>
                   <div className="spot-location">
                      <h5>{`${spot?.city}, ${spot?.state} ${spot?.country}`}</h5>

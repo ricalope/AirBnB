@@ -44,17 +44,6 @@ img.spot-image {
    justify-content: center;
 }
 
-.one-image {
-   width: 70%;
-   object-fit: cover;
-}
-
-.one-image-div img {
-   border-radius: 5%;
-   width: 50%;
-   height: 50%;
-}
-
 a {
    text-decoration: none;
    color: black;
