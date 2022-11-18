@@ -59,7 +59,7 @@ module.exports = {
          },
          {
             spotId: 10,
-            url: 'https://assets.newatlas.com/dims4/default/f2509f0/2147483647/strip/true/crop/4461x2974+0+0/resize/1920x1280!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2F38%2Fcc%2Fcb4aa02c4b0ab31f1e5a126d8c9b%2F01-5563-gawthorneshut-caarch-ambercreative.jpg',
+            url: 'https://images.adsttc.com/media/images/5e79/5e8f/b357/65c4/5c00/0409/slideshow/_fi.jpg?1585012324',
             preview: true
          }
       ], {});
