@@ -16,18 +16,18 @@ function AddSpot() {
    const [ price, setPrice ] = useState(0);
    const [ imageUrl, setImageUrl ] = useState("");
    const [ errors, setErrors ] = useState([]);
-   // const [submitted, setSubmitted] = useState(false);
+   const [submitted, setSubmitted] = useState(false);
 
    useEffect(() => {
       const errors = [];
-      if (!address.length) errors.push("Please provide a valid address.");
-      if (!city.length) errors.push("Please provide a valid city.");
-      if (!state.length) errors.push("Please provide a valid state.");
-      if (!country.length) errors.push("Please provide a valid Country.");
-      if (!name.length) errors.push("Please provide a valid name for your spot.");
-      if (!description.length) errors.push("Please provide a valid description for your spot.");
-      if (!price || price <= 0) errors.push("Please provide a valid price per night.");
-      if (imageUrl.length > 255) errors.push("Please provide a valid image url less than 255 characters");
+      if (!address.length) errors.push("* Please provide a valid address.");
+      if (!city.length) errors.push("* Please provide a valid city.");
+      if (!state.length) errors.push("* Please provide a valid state.");
+      if (!country.length) errors.push("* Please provide a valid Country.");
+      if (!name.length) errors.push("* Please provide a valid name for your spot.");
+      if (!description.length) errors.push("* Please provide a valid description for your spot.");
+      if (!price || price <= 0) errors.push("* Please provide a valid price per night.");
+      // if (imageUrl.length > 255) errors.push("Please provide a valid image url less than 255 characters");
       setErrors(errors);
    }, [ address, city, state, country, name, description, price, imageUrl ]);
 
@@ -36,7 +36,7 @@ function AddSpot() {
    const onSubmit = async e => {
       e.preventDefault();
 
-      // setSubmitted(true);
+      setSubmitted(true);
 
       const formValues = {
          address,
@@ -62,16 +62,14 @@ function AddSpot() {
       setDescription("");
       setPrice(0);
       setImageUrl("");
-      // setSubmitted(false)
    }
 
    return (
       <div>
          <form onSubmit={onSubmit}>
             <h2>Create a New Tiny Hub</h2>
-            {errors.length > 0 && (
+            {submitted && errors.length > 0 && (
                <div className="errors">
-                  Please correct the following:
                   <ul>
                      {errors.map((error, idx) => (
                         <li key={idx}>
@@ -147,7 +145,7 @@ function AddSpot() {
             </label>
             <button
                type="submit"
-               disabled={!!errors.length}
+               onSubmit={onSubmit}
             >
                Submit Spot
             </button>
