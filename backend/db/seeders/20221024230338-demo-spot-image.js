@@ -14,17 +14,17 @@ module.exports = {
       await queryInterface.bulkInsert('SpotImages', [
          {
             spotId: 1,
-            url: 'https://photos.zillowstatic.com/fp/dcc6a40b3ea8fd51f0e59953cec9e230-cc_ft_768.webp',
+            url: 'https://thetinylife.com/wp-content/uploads/2021/05/tiny-house-for-sale-scottsdale-arizona.jpg',
             preview: true
          },
          {
             spotId: 2,
-            url: 'https://www.cachethomes.net/wp-content/uploads/Cachet-Homes-EH1-A-2.jpg',
+            url: 'https://thetinylife.com/wp-content/uploads/2021/05/grand-canyon-tiny-house-for-rent.jpg',
             preview: true
          },
          {
             spotId: 3,
-            url: 'https://p.bookcdn.com/data/Photos/r1609x607/9614/961432/961432744.JPEG',
+            url: 'https://thetinylife.com/wp-content/uploads/2021/05/glamping-aframe-for-rent-in-arizona.jpg',
             preview: true
          },
          {
@@ -35,6 +35,31 @@ module.exports = {
          {
             spotId: 5,
             url: 'https://www.familyhandyman.com/wp-content/uploads/2017/08/Wee-House-Arado-Courtesy-of-Alchemy-Architects.jpg?w=1200',
+            preview: true
+         },
+         {
+            spotId: 6,
+            url: 'https://cdn.vox-cdn.com/thumbor/1NX3nvxqHyufNlgldf-8LsTq1_E=/0x0:1400x897/1820x1213/filters:focal(588x336:812x560):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/65893255/small_storage_xl.0.jpg',
+            preview: true
+         },
+         {
+            spotId: 7,
+            url: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/tiny-homes-for-sale-1655402819.jpg?crop=1.00xw:0.752xh;0,0.0625xh&resize=980:*',
+            preview: true
+         },
+         {
+            spotId: 8,
+            url: 'https://images.squarespace-cdn.com/content/v1/56763f974bf118c80a3428eb/d6fb11ad-9988-4180-9a72-e6f2af46d950/Lemon+Cove+RV+Park+.png?format=1000w',
+            preview: true
+         },
+         {
+            spotId: 9,
+            url: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/tiny-houses-buy-1661975977.png?crop=1xw:0.9939593629873696xh;center,top&resize=980:*',
+            preview: true
+         },
+         {
+            spotId: 10,
+            url: 'https://assets.newatlas.com/dims4/default/f2509f0/2147483647/strip/true/crop/4461x2974+0+0/resize/1920x1280!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2F38%2Fcc%2Fcb4aa02c4b0ab31f1e5a126d8c9b%2F01-5563-gawthorneshut-caarch-ambercreative.jpg',
             preview: true
          }
       ], {});

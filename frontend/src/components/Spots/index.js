@@ -23,7 +23,7 @@ function Spots() {
                         <img src={spot?.previewImage} className="spot-image" alt={spot.name} />
                         <h4>{`${spot?.city}, ${spot?.state}`}</h4>
                         <p>{`$${spot?.price} night`}</p>
-                        <p>{`★ ${spot?.avgRating ? spot.avgRating : 'no reviews yet'}`}</p>
+                        <p>{`★ ${spot?.avgRating ? Number(spot.avgRating).toFixed(1) : 'no reviews yet'}`}</p>
                      </NavLink>
                   </nav>
                </div>

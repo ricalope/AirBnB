@@ -71,7 +71,7 @@ function OneSpot() {
             <div className="spot-name"><h2>{spot?.name}</h2></div>
             <div className="detail-top-bottom">
                <div className="spot-rating">
-                  {`★ ${spot?.avgStarRating ? spot?.avgStarRating : ' no reviews for this hub yet.'}`}
+                  {`★ ${spot?.avgStarRating ? Number(spot?.avgStarRating).toFixed(1) : ' no reviews for this hub yet.'}`}
                </div>
                <span>•</span>
                <div>{`${reviews.length} reviews`}</div>
