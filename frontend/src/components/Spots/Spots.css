@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap');
+
 html {
    margin-left: 5vw;
    margin-right: 5vw;
@@ -21,7 +23,7 @@ html {
    padding: 10px;
    justify-content: center;
    flex-wrap: wrap;
-   max-width: 220px;
+   width: 300px;
    box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
    border-radius: 5px;
    margin-bottom: 2vh;
@@ -32,7 +34,7 @@ html {
 }
 
 img.spot-image {
-   width: 200px;
+   width: 285px;
    height: 200px;
    align-self: flex-start;
    border-radius: 10px;
@@ -51,4 +53,33 @@ a {
 
 p {
    font-size: 10px;
+}
+
+.bottom-card {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   gap: 12px;
+}
+
+.bottom-top {
+   display: flex;
+   justify-content: space-between;
+   margin-top: 5px;
+   gap: 20px;
+}
+
+.spot-rating {
+   font-size: 12px;
+   padding: 3px;
+}
+
+.spot-price {
+   font-weight: bolder;
+   font-size: 12px;
+}
+
+#night {
+   font-weight: lighter;
+   color: black;
 }

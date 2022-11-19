@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { addNewSpot, addNewSpotImage } from '../../store/spots';
+import './AddSpot.css';
 
 function AddSpot() {
    const dispatch = useDispatch();
@@ -16,7 +17,7 @@ function AddSpot() {
    const [ price, setPrice ] = useState(0);
    const [ imageUrl, setImageUrl ] = useState("");
    const [ errors, setErrors ] = useState([]);
-   const [submitted, setSubmitted] = useState(false);
+   const [ submitted, setSubmitted ] = useState(false);
 
    useEffect(() => {
       const errors = [];
@@ -27,7 +28,6 @@ function AddSpot() {
       if (!name.length) errors.push("* Please provide a valid name for your spot.");
       if (!description.length) errors.push("* Please provide a valid description for your spot.");
       if (!price || price <= 0) errors.push("* Please provide a valid price per night.");
-      // if (imageUrl.length > 255) errors.push("Please provide a valid image url less than 255 characters");
       setErrors(errors);
    }, [ address, city, state, country, name, description, price, imageUrl ]);
 
@@ -65,7 +65,7 @@ function AddSpot() {
    }
 
    return (
-      <div>
+      <div className="create-container">
          <form onSubmit={onSubmit}>
             <h2>Create a New Tiny Hub</h2>
             {submitted && errors.length > 0 && (
@@ -143,12 +143,14 @@ function AddSpot() {
                   onChange={(e) => setImageUrl(e.target.value)}
                />
             </label>
-            <button
-               type="submit"
-               onSubmit={onSubmit}
-            >
-               Submit Spot
-            </button>
+            <div className="button-container">
+               <button
+                  type="submit"
+                  onSubmit={onSubmit}
+               >
+                  Submit Hub
+               </button>
+            </div>
          </form>
       </div>
    );

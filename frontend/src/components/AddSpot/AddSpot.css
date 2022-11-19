@@ -1,0 +1,20 @@
+.create-container {
+   margin-top: 10px;
+}
+
+.button-container > button {
+   border-radius: 5px;
+   padding: 5px;
+   background-color: #6699cc;
+   color: white;
+   border: none;
+   cursor: pointer;
+}
+
+.button-container > button:hover {
+   background-color: #4b86b4;
+}
+
+.errors > ul {
+   margin-left: 120px;
+}

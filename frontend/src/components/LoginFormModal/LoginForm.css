@@ -1,8 +1,9 @@
 .container {
-   width: 400px;
+   width: 380px;
    height: 200px;
    justify-content: center;
    flex-direction: row;
+   padding: 20px;
 }
 
 form {
@@ -21,4 +22,22 @@ input {
    flex-direction: column;
 }
 
+.button-div {
+   display: flex;
+   gap: 5px;
+}
 
+.log-in > button,
+.sign-up > button {
+   border-radius: 5px;
+   padding: 5px;
+   background-color: #6699cc;
+   color: white;
+   border: none;
+   cursor: pointer;
+}
+
+.log-in > button:hover,
+.sign-up > button:hover {
+   background-color: #4b86b4;
+}

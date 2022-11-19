@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&family=Red+Hat+Text:wght@500&display=swap');
+
 .detail-container {
    display: flex;
    flex-direction: column;
    height: 1400px;
    padding: 10px;
+   border: 1px solid black;
 }
 
 .spot-name {
@@ -15,19 +18,23 @@
    flex-direction: column;
    justify-content: space-between;
    margin-bottom: 10px;
+   margin-left: 5px;
    height: 75px;
 }
 
 .detail-top-bottom {
    display: flex;
+   align-items: center;
    gap: 20px;
-   font-size: 13px;
+   font-size: 15px;
    font-weight: bolder;
+   /* padding: 5px; */
+   font-weight:400;
 }
 
-.detail-image {
+/* .detail-image {
    padding: 5px;
-}
+} */
 
 .one-image-div img {
    border-radius: 25px;
@@ -49,8 +56,8 @@ img.one-image {
 
 .spot-owner {
    font-size: 25px;
-   font-weight: bolder;
-   padding: 10px;
+   font-weight: bold;
+   /* padding: 10px; */
 }
 
 .spot-description {
