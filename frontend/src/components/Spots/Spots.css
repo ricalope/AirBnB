@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500&display=swap');
 html {
    margin-left: 5vw;
    margin-right: 5vw;
@@ -77,6 +76,10 @@ p {
 .spot-price {
    font-weight: bolder;
    font-size: 12px;
+}
+
+.spot-location {
+   font-weight: 400;
 }
 
 #night {
