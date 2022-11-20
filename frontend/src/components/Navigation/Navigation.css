@@ -39,31 +39,21 @@ ul {
    justify-content: space-between;
 }
 
-
-/* li#home-button {
+ul.profile-dropdown {
    display: flex;
-   background-color: white;
-} */
-
-/* .home-button {
-   display: flex;
-   align-self: center;
-   column-gap: 10px;
-} */
-
-/* .prof-btn {
-   display: flex;
-   align-self: flex-end;
-} */
+   align-items: center;
+   font-size: 14px;
+}
 
 .profile-dropdown {
    position: absolute;
-   right: 5vw;
+   right: 5.5vw;
    background-color: white;
-   width: fit-content;
+   width: 180px;
    border-radius: 15px;
    height: fit-content;
    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+   padding: 15px;
 }
 
 button.profile-button {
@@ -99,16 +89,14 @@ i.fa-solid {
    display: flex;
    flex-direction: column;
    align-items: flex-start;
-   justify-content: space-evenly;
-   align-content: flex-start;
    gap: 10px;
-   padding: 10px;
+   /* padding: 5px; */
 }
 
 .profile-logout>li>button {
    background-color: white;
    border: none;
-   font-size: 16px;
+   font-size: 14px;
    cursor: pointer;
    text-decoration: underline;
 }
@@ -123,6 +111,7 @@ i.fa-solid {
    border: none;
    text-decoration: underline;
    cursor: pointer;
+   font-size: 14px;
 }
 
 div.nav-right > ul{

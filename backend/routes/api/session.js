@@ -47,7 +47,7 @@ router.get('/', restoreUser, (req, res) => {
    if (user) {
       return res.json(user.toSafeObject());
    } else {
-      return res.json({});
+      return res.json(null);
    }
 });
 

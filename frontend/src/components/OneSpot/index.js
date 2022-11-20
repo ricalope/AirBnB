@@ -14,7 +14,6 @@ function OneSpot() {
       dispatch(getSpotDetails(spotId))
       dispatch(loadSpotReviews(spotId))
          .then(() => setIsLoaded(true))
-         .catch((err) => console.log(err))
    }, [ dispatch, spotId ]);
 
    const spot = useSelector(state => state.spots.oneSpot);
@@ -26,38 +25,40 @@ function OneSpot() {
    if (!user?.id) {
       return isLoaded && (
          <div className="detail-container">
-            <div className="detail-top">
-               <div className="spot-name">{spot?.name}</div>
-               <div className="detail-top-bottom">
-                  <div className="spot-rating">
-                     <h6>{`★ ${spot?.avgStarRating ? spot?.avgStarRating : ' no reviews for this hub yet.'}`}</h6>
-                     <div>{`${reviews.length} reviews`}</div>
-                  </div>
-                  <div className="spot-location">
-                     <h5>{`${spot?.city}, ${spot?.state} ${spot?.country}`}</h5>
-                  </div>
+         <div className="detail-top">
+            <div className="spot-name"><h2>{spot?.name}</h2></div>
+            <div className="detail-top-bottom">
+               <div className="spot-rating">
+                  {`★ ${spot?.avgStarRating ? Number(spot?.avgStarRating).toFixed(1) : ' No reviews for this hub yet.'}`}
+               </div>
+               <span>•</span>
+               <div>{`${reviews.length} reviews`}</div>
+               <span>•</span>
+               <div className="spot-location">
+                  {`${spot?.city}, ${spot?.state} ${spot?.country}`}
                </div>
             </div>
-            <div className="detail-image">
-               <div className="one-image-div">
-                  <img className="one-image" src={spot?.SpotImages[ 0 ]?.url} alt={spot?.name} />
-               </div>
+         </div>
+         <div className="detail-image">
+            <div className="one-image-div">
+               <img className="one-image" src={spot?.SpotImages[ 0 ]?.url} alt={spot?.name} />
             </div>
-            <div className="bottom-container">
-               <div className="spot-owner">Hub hosted by {spot.Owner.firstName}</div>
-               <div className="spot-description">{spot.description}</div>
-               <div className="spot-reviews">
-                  <ul>
-                     {reviews.map(review => (
-                        <li key={review.id}>
-                           <Link to={`/spots/${spot.id}/reviews`}>
-                              {review?.review}
-                           </Link>
-                           <p>{`- ${review?.User.firstName} ${review?.stars} ★`}</p>
-                        </li>
-                     ))}
-                  </ul>
-               </div>
+         </div>
+         <div className="bottom-container">
+            <div className="spot-owner">Hub hosted by {spot.Owner.firstName}</div>
+            <div className="spot-description">{spot.description}</div>
+            <div className="spot-reviews">
+               <ul>
+                  {reviews.map(review => (
+                     <li key={review.id}>
+                        <Link to={`/spots/${spot.id}/reviews`}>
+                           {review?.review}
+                        </Link>
+                        <p>{`- ${review?.User.firstName} ${review?.stars} ★`}</p>
+                     </li>
+                  ))}
+               </ul>
+            </div>
             </div>
          </div>
       );
@@ -71,7 +72,7 @@ function OneSpot() {
             <div className="spot-name"><h2>{spot?.name}</h2></div>
             <div className="detail-top-bottom">
                <div className="spot-rating">
-                  {`★ ${spot?.avgStarRating ? Number(spot?.avgStarRating).toFixed(1) : ' no reviews for this hub yet.'}`}
+                  {`★ ${spot?.avgStarRating ? Number(spot?.avgStarRating).toFixed(1) : ' No reviews for this hub yet.'}`}
                </div>
                <span>•</span>
                <div>{`${reviews.length} reviews`}</div>
@@ -97,7 +98,7 @@ function OneSpot() {
             )}
             {user?.id !== spot?.ownerId && !existingReview && (
                <div className="add-review">
-                  <Link to={`/spots/${spot?.id}/reviews/new`}>add a review</Link>
+                  <Link to={`/spots/${spot?.id}/reviews/new`}>Leave a review</Link>
                </div>
             )}
             <div className="spot-reviews">
@@ -108,13 +109,15 @@ function OneSpot() {
                            {review?.review}
                         </Link>
                         <p>{`- ${review?.User.firstName} ${review?.stars} ★`}</p>
+                        <p>{user.id === review.userId && (
+                              <Link to={`/reviews/${review.id}/delete`}>delete</Link>
+                           )}</p>
                      </li>
                   ))}
                </ul>
             </div>
          </div>
       </div>
-
    );
 }
 

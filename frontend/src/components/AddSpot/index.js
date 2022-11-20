@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { addNewSpot, addNewSpotImage } from '../../store/spots';
+import './AddSpot.css';
 
 function AddSpot() {
    const dispatch = useDispatch();
@@ -16,18 +17,17 @@ function AddSpot() {
    const [ price, setPrice ] = useState(0);
    const [ imageUrl, setImageUrl ] = useState("");
    const [ errors, setErrors ] = useState([]);
-   const [submitted, setSubmitted] = useState(false);
+   const [ submitted, setSubmitted ] = useState(false);
 
    useEffect(() => {
       const errors = [];
-      if (!address) errors.push("Please provide a valid address.");
-      if (!city) errors.push("Please provide a valid city.");
-      if (!state.length) errors.push("Please provide a valid state.");
-      if (!country.length) errors.push("Please provide a valid Country.");
-      if (!name.length) errors.push("Please provide a valid name for your spot.");
-      if (!description.length) errors.push("Please provide a valid description for your spot.");
-      if (!price || price <= 0) errors.push("Please provide a valid price per night.");
-      if (!imageUrl.length) errors.push("Please provide a valid image url for your spot");
+      if (!address.length) errors.push("* Please provide a valid address.");
+      if (!city.length) errors.push("* Please provide a valid city.");
+      if (!state.length) errors.push("* Please provide a valid state.");
+      if (!country.length) errors.push("* Please provide a valid Country.");
+      if (!name.length) errors.push("* Please provide a valid name for your spot.");
+      if (!description.length) errors.push("* Please provide a valid description for your spot.");
+      if (!price || price <= 0) errors.push("* Please provide a valid price per night.");
       setErrors(errors);
    }, [ address, city, state, country, name, description, price, imageUrl ]);
 
@@ -60,95 +60,112 @@ function AddSpot() {
       setDescription("");
       setPrice(0);
       setImageUrl("");
-      setSubmitted(false)
+   }
+
+   const onCancel = () => {
+      history.push('/');
    }
 
    return (
-      <div>
-         <form onSubmit={onSubmit}>
+      <div className="create-container">
+         <div className="create-header">
             <h2>Create a New Tiny Hub</h2>
-            {submitted && !!errors.length && (
-               <div className="errors">
-                  Please correct the following:
-                  <ul>
-                     {errors.map((error, idx) => (
-                        <li key={idx}>
-                           {error}
-                        </li>
-                     ))}
-                  </ul>
+         </div>
+         <div className="create-form">
+            <form onSubmit={onSubmit}>
+               {submitted && errors.length > 0 && (
+                  <div className="errors">
+                     <ul>
+                        {errors.map((error, idx) => (
+                           <li key={idx}>
+                              {error}
+                           </li>
+                        ))}
+                     </ul>
+                  </div>
+               )}
+               <label>
+                  Address
+                  <input
+                     type="text"
+                     value={address}
+                     onChange={(e) => setAddress(e.target.value)}
+                  />
+               </label>
+               <label>
+                  City
+                  <input
+                     type="text"
+                     value={city}
+                     onChange={(e) => setCity(e.target.value)}
+                  />
+               </label>
+               <label>
+                  State
+                  <input
+                     type="text"
+                     value={state}
+                     onChange={(e) => setState(e.target.value)}
+                  />
+               </label>
+               <label>
+                  Country
+                  <input
+                     type="text"
+                     value={country}
+                     onChange={(e) => setCountry(e.target.value)}
+                  />
+               </label>
+               <label>
+                  Name
+                  <input
+                     type="text"
+                     value={name}
+                     onChange={(e) => setName(e.target.value)}
+                  />
+               </label>
+               <label>
+                  Description
+                  <input
+                     type="text"
+                     value={description}
+                     onChange={(e) => setDescription(e.target.value)}
+                  />
+               </label>
+               <label>
+                  Price
+                  <input
+                     type="number"
+                     value={price}
+                     onChange={(e) => setPrice(e.target.value)}
+                  />
+               </label>
+               <label>
+                  Image
+                  <input
+                     type="url"
+                     value={imageUrl}
+                     onChange={(e) => setImageUrl(e.target.value)}
+                  />
+               </label>
+               <div className="button-container">
+                  <button
+                     className="cancel-create"
+                     onClick={onCancel}
+                  >
+                     Cancel
+                  </button>
+
+                  <button
+                     type="submit"
+                     className="submit-create"
+                     onSubmit={onSubmit}
+                  >
+                     Submit Hub
+                  </button>
                </div>
-            )}
-            <label>
-               Address
-               <input
-                  type="text"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-               />
-            </label>
-            <label>
-               City
-               <input
-                  type="text"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-               />
-            </label>
-            <label>
-               State
-               <input
-                  type="text"
-                  value={state}
-                  onChange={(e) => setState(e.target.value)}
-               />
-            </label>
-            <label>
-               Country
-               <input
-                  type="text"
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)}
-               />
-            </label>
-            <label>
-               Name
-               <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-               />
-            </label>
-            <label>
-               Description
-               <input
-                  type="text"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-               />
-            </label>
-            <label>
-               Price
-               <input
-                  type="number"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-               />
-            </label>
-            <label>
-               Image
-               <input
-                  type="url"
-                  value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
-               />
-            </label>
-            <button
-               type="submit"
-               disabled={!!errors.length}>
-               Submit Spot
-            </button>
-         </form>
+            </form>
+         </div>
       </div>
    );
 }

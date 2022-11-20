@@ -1,0 +1,41 @@
+.create-container {
+   margin-top: 10px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 10px;
+   padding: 20px;
+}
+
+.create-form {
+   display: flex;
+   flex-direction: column;
+   border-radius: 10px;
+   box-shadow: 0 0 4px rgba(125, 125, 125, 0.5);
+   width: 400px;
+   padding: 15px;
+}
+
+.button-container {
+   display: flex;
+   gap: 10px;
+}
+
+.cancel-create,
+.submit-create {
+   border-radius: 5px;
+   padding: 5px;
+   background-color: #6699cc;
+   color: white;
+   border: none;
+   cursor: pointer;
+}
+
+.cancel-create:hover,
+.submit-create:hover {
+   background-color: #4b86b4;
+}
+
+.errors > ul {
+   margin-left: 120px;
+}

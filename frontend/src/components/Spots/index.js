@@ -21,9 +21,13 @@ function Spots() {
                   <nav>
                      <NavLink to={`/spots/${spot?.id}`}>
                         <img src={spot?.previewImage} className="spot-image" alt={spot.name} />
-                        <h4>{`${spot?.city}, ${spot?.state}`}</h4>
-                        <p>{`$${spot?.price} night`}</p>
-                        <p>{`★ ${spot?.avgRating ? Number(spot.avgRating).toFixed(1) : 'no reviews yet'}`}</p>
+                        <div className="bottom-card">
+                           <div className="bottom-top">
+                              <div className="spot-location">{`${spot?.city}, ${spot?.state}`}</div>
+                              <div className="spot-rating">{`★ ${spot?.avgRating ? Number(spot?.avgRating).toFixed(1) : 'no reviews yet'}`}</div>
+                           </div>
+                           <div className="spot-price">${spot?.price}<span id="night"> Night</span></div>
+                        </div>
                      </NavLink>
                   </nav>
                </div>
