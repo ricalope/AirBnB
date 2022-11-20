@@ -31,8 +31,6 @@ function AddSpot() {
       setErrors(errors);
    }, [ address, city, state, country, name, description, price, imageUrl ]);
 
-   console.log(errors)
-
    const onSubmit = async e => {
       e.preventDefault();
 
@@ -64,94 +62,110 @@ function AddSpot() {
       setImageUrl("");
    }
 
+   const onCancel = () => {
+      history.push('/');
+   }
+
    return (
       <div className="create-container">
-         <form onSubmit={onSubmit}>
+         <div className="create-header">
             <h2>Create a New Tiny Hub</h2>
-            {submitted && errors.length > 0 && (
-               <div className="errors">
-                  <ul>
-                     {errors.map((error, idx) => (
-                        <li key={idx}>
-                           {error}
-                        </li>
-                     ))}
-                  </ul>
+         </div>
+         <div className="create-form">
+            <form onSubmit={onSubmit}>
+               {submitted && errors.length > 0 && (
+                  <div className="errors">
+                     <ul>
+                        {errors.map((error, idx) => (
+                           <li key={idx}>
+                              {error}
+                           </li>
+                        ))}
+                     </ul>
+                  </div>
+               )}
+               <label>
+                  Address
+                  <input
+                     type="text"
+                     value={address}
+                     onChange={(e) => setAddress(e.target.value)}
+                  />
+               </label>
+               <label>
+                  City
+                  <input
+                     type="text"
+                     value={city}
+                     onChange={(e) => setCity(e.target.value)}
+                  />
+               </label>
+               <label>
+                  State
+                  <input
+                     type="text"
+                     value={state}
+                     onChange={(e) => setState(e.target.value)}
+                  />
+               </label>
+               <label>
+                  Country
+                  <input
+                     type="text"
+                     value={country}
+                     onChange={(e) => setCountry(e.target.value)}
+                  />
+               </label>
+               <label>
+                  Name
+                  <input
+                     type="text"
+                     value={name}
+                     onChange={(e) => setName(e.target.value)}
+                  />
+               </label>
+               <label>
+                  Description
+                  <input
+                     type="text"
+                     value={description}
+                     onChange={(e) => setDescription(e.target.value)}
+                  />
+               </label>
+               <label>
+                  Price
+                  <input
+                     type="number"
+                     value={price}
+                     onChange={(e) => setPrice(e.target.value)}
+                  />
+               </label>
+               <label>
+                  Image
+                  <input
+                     type="url"
+                     value={imageUrl}
+                     onChange={(e) => setImageUrl(e.target.value)}
+                  />
+               </label>
+               <div className="button-container">
+                  <button
+                     className="cancel-create"
+                     onClick={onCancel}
+                  >
+                     Cancel
+                  </button>
+
+                  <button
+                     type="submit"
+                     className="submit-create"
+                     onSubmit={onSubmit}
+                  >
+                     Submit Hub
+                  </button>
                </div>
-            )}
-            <label>
-               Address
-               <input
-                  type="text"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-               />
-            </label>
-            <label>
-               City
-               <input
-                  type="text"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-               />
-            </label>
-            <label>
-               State
-               <input
-                  type="text"
-                  value={state}
-                  onChange={(e) => setState(e.target.value)}
-               />
-            </label>
-            <label>
-               Country
-               <input
-                  type="text"
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)}
-               />
-            </label>
-            <label>
-               Name
-               <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-               />
-            </label>
-            <label>
-               Description
-               <input
-                  type="text"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-               />
-            </label>
-            <label>
-               Price
-               <input
-                  type="number"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-               />
-            </label>
-            <label>
-               Image
-               <input
-                  type="url"
-                  value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
-               />
-            </label>
-            <div className="button-container">
-               <button
-                  type="submit"
-                  onSubmit={onSubmit}
-               >
-                  Submit Hub
-               </button>
-            </div>
-         </form>
+            </form>
+         </div>
       </div>
    );
 }

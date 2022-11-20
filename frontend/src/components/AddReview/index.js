@@ -31,6 +31,10 @@ function AddReview() {
       setStars("");
    }
 
+   const onCancel = () => {
+      history.push(`/spots/${spotId}`);
+   }
+
    return (
       <div>
          {user?.id === owner ? (
@@ -38,7 +42,7 @@ function AddReview() {
          ) : (
             <div className="review-container">
                <div className="header">
-                  <h3>leave a review</h3>
+                  <h3>Leave a Review</h3>
                </div>
                <div className="form-container">
                   <form onSubmit={onSubmit}>
@@ -91,9 +95,18 @@ function AddReview() {
                            onChange={(e) => setReview(e.target.value)}
                            placeholder=" add a review..."
                         />
-                        <div className="review-form-button">
-                           <button type="submit">
-                              submit review
+                        <div className="review-form-buttons">
+                           <button
+                              className="cancel-review"
+                              onClick={onCancel}
+                           >
+                              Cancel
+                           </button>
+                           <button
+                              type="submit"
+                              className="submit-review"
+                           >
+                              Submit Review
                            </button>
                         </div>
                      </div>

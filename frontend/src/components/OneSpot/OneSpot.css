@@ -5,7 +5,6 @@
    flex-direction: column;
    height: 1400px;
    padding: 10px;
-   border: 1px solid black;
 }
 
 .spot-name {
@@ -30,10 +29,6 @@
    font-weight: bolder;
    font-weight:400;
 }
-
-/* .detail-image {
-   padding: 5px;
-} */
 
 .one-image-div img {
    border-radius: 25px;
