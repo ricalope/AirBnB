@@ -20,10 +20,9 @@ function DeleteSpot() {
    return (
       <div className="delete-container">
          <div className="delete-content">
-            <h2>Confirm delete hub?</h2>
-            <h5 id="haiku">today was the day<br />
-               that I had to say goodbye<br />
-               I will miss this hub
+            <h2>Confirm delete hub</h2>
+            <h5 className="haiku">
+               Please confirm if you would like to delete this hub
             </h5>
             <div className="delete-buttons">
                <button className="confirm-delete" onClick={onCancel}>Cancel</button>

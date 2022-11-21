@@ -21,28 +21,35 @@ function Reviews() {
    }, [ dispatch, spotId ]);
 
    return isLoaded && (
-      <div>
-         <div>
+      <div className="reviews-container">
+         <div className="reviews-header">
             <h2>User reviews for this hub</h2>
          </div>
-         <div>
-            <ul>
-               {reviews.map(review => (
-                  <div className="review-container" key={review?.id}>
-                     {user?.id === review?.userId && (
-                        <div>
-                           <p>
-                              <Link to={`/reviews/${review.id}/delete`}>
-                                 delete
-                              </Link>
-                           </p>
+         <div className="reviews-content">
+            {reviews.map(review => (
+               <div className="review-links" key={review?.id}>
+                  <div className="review-top">
+                     <div className="review-icon">
+                        <i className="fa-solid fa-user" />
+                     </div>
+                     <div className="review-middle">
+                        <div className="review-author">
+                           {review?.User?.firstName}
                         </div>
-                     )}
-                     <li>{review?.review}</li>
-                     <li><p>{`- ${review?.User.firstName} ${review?.stars} ★`}</p></li>
+                        {user?.id === review?.userId && (
+                           <div className="remove">
+                              <p>
+                                 <Link to={`/reviews/${review.id}/delete`}>
+                                    delete review
+                                 </Link>
+                              </p>
+                           </div>
+                        )}
+                     </div>
                   </div>
-               ))}
-            </ul>
+                  <div className="review-text">{review?.review}</div>
+               </div>
+            ))}
          </div>
       </div>
    );

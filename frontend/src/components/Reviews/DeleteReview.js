@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { deleteSpotReview } from '../../store/reviews';
-import './Reviews.css'
 
 function DeleteReview() {
    const { reviewId } = useParams();
@@ -23,10 +22,9 @@ function DeleteReview() {
    return (
       <div className="delete-container">
          <div className="delete-content">
-            <h2>Confirm delete review?</h2>
-            <h5>yesterday's reviews<br />
-               we have memories of them<br />
-               but we do not dwell
+            <h2>Confirm delete review</h2>
+            <h5 className="haiku">
+               Please confirm if you would like to delete this review
             </h5>
             <div className="delete-buttons">
             <button

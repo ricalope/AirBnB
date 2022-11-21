@@ -26,7 +26,7 @@ function Spots() {
                               <div className="spot-location">{`${spot?.city}, ${spot?.state}`}</div>
                               <div className="spot-rating">{`★ ${spot?.avgRating ? Number(spot?.avgRating).toFixed(1) : 'no reviews yet'}`}</div>
                            </div>
-                           <div className="spot-price">${spot?.price}<span id="night"> Night</span></div>
+                           <div className="spot-price">${spot?.price}<span id="night"> night</span></div>
                         </div>
                      </NavLink>
                   </nav>
