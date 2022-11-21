@@ -5,6 +5,9 @@ Tiny Hub is a clone website of AirBnB, as my first fullstack application this si
 
 https://borrow-a-home.herokuapp.com/
 
+<img width="1261" alt="Screenshot 2022-11-20 at 5 41 42 PM" src="https://user-images.githubusercontent.com/102694854/202936047-d8ad2606-ff13-4ee6-aba2-474f66c5c260.png">
+
+
 ---------------------------------------
 ## list of technologies used on this project
 
