@@ -1,15 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&family=Red+Hat+Text:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@300;400;500;600&display=swap');
 
 .detail-container {
    display: flex;
    flex-direction: column;
    height: 1400px;
    padding: 10px;
-}
-
-.spot-name {
-   font-size: 20px;
-   font-weight: bolder;
 }
 
 .detail-top {
@@ -21,18 +16,44 @@
    height: 75px;
 }
 
+.spot-name {
+   font-size: 20px;
+   font-weight: 500;
+}
+
 .detail-top-bottom {
    display: flex;
    align-items: center;
-   gap: 20px;
+   gap: 15px;
    font-size: 15px;
-   font-weight: bolder;
-   font-weight:400;
+   font-weight: 500;
+}
+
+.spot-rating {
+   font-size: 14px;
+}
+
+.spot-location {
+   font-weight: 500;
+}
+
+.edit-delete-links {
+   display: flex;
+   gap: 10px;
+   align-self: flex-end;
+   padding-left: 275px;
+   text-decoration: underline;
+}
+
+#edit,
+#del {
+   font-size: 14px;
+   font-weight: 400;
 }
 
 .one-image-div img {
    border-radius: 25px;
-   width: 60%;
+   width: 800px;
    height: 500px;
 }
 
@@ -51,7 +72,6 @@ img.one-image {
 .spot-owner {
    font-size: 25px;
    font-weight: bold;
-   /* padding: 10px; */
 }
 
 .spot-description {
@@ -66,9 +86,43 @@ img.one-image {
 }
 
 .spot-reviews {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
    padding: 10px;
+}
+
+.top-ratings {
+   display: flex;
+   gap: 10px;
+}
+
+.average-rating,
+.number-rating {
+   font-weight: 600;
+   font-size: 18px;
 }
 
 span {
    color: grey;
+}
+
+.box-reviews {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+   padding: 5px 5px 5px 0;
+}
+
+.user-reviews {
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   width: 45%;
+   padding: 5px 5px 5px 0;
+}
+
+.firstname {
+   font-size: 14px;
+   font-weight: 500;
 }
