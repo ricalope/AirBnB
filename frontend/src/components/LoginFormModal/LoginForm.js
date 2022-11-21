@@ -16,12 +16,9 @@ function LoginForm({ setShowModal }) {
          .then(() => setShowModal(false))
          .catch(async (res) => {
             const data = await res.json();
-            console.log(data)
             if (data && data.message) setErrors([data.message]);
          });
    }
-
-   console.log(errors)
 
    const demoUserLogin = () => {
       setCredential("Demo-lition")
