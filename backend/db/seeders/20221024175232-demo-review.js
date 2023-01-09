@@ -1,17 +1,14 @@
 'use strict';
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;
+}
+
 module.exports = {
    async up(queryInterface, Sequelize) {
-      /**
-       * Add seed commands here.
-       *
-       * Example:
-       * await queryInterface.bulkInsert('People', [{
-       *   name: 'John Doe',
-       *   isBetaMember: false
-       * }], {});
-      */
-      await queryInterface.bulkInsert('Reviews', [
+    options.tableName = 'Reviews'
+      await queryInterface.bulkInsert(options, [
          {
             userId: 6,
             spotId: 2,
@@ -106,12 +103,6 @@ module.exports = {
    },
 
    async down(queryInterface, Sequelize) {
-      /**
-       * Add commands to revert seed here.
-       *
-       * Example:
-       * await queryInterface.bulkDelete('People', null, {});
-       */
-      await queryInterface.bulkDelete('Reviews', null, {});
+      await queryInterface.bulkDelete(options, null, {});
    }
 };
