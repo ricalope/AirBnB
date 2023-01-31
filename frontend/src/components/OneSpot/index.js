@@ -173,6 +173,7 @@ function OneSpot() {
                 <div className="bookings-container">
                     <Bookings
                         spot={spot}
+                        spotId={spot.id}
                         reviews={reviews}
                     />
                 </div>

@@ -12,7 +12,7 @@
     height: 400px;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 0 6px black;
+    box-shadow: 0 0 8px black;
     gap: 10px;
 }
 
@@ -46,6 +46,7 @@
     display: flex;
     border-radius: 5px;
     gap: 1px;
+    padding: 10px;
 }
 
 .bookings-res-container {
@@ -125,12 +126,34 @@
     border-radius: 5px;
 }
 
-.react-calendar {
+.cal-wrapper {
     position: absolute;
     top: 0;
-    right: 305px;
+    left: -380px;
     border-radius: 8px;
+    padding: 10px;
+    background-color: white;
+    min-height: 400px;
+    max-width: 370px;
+    box-shadow: 0 0 8px black;
+}
+
+.react-calendar {
     padding: 5px;
+    border-radius: 8px;
+}
+
+.close-wrapper {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+}
+
+.close-cal {
+    background-color: transparent;
+    color: black;
+    border: none;
+    cursor: pointer;
 }
 
 .sign-button {
@@ -174,4 +197,13 @@
 .u-b-ptag {
     font-size: 14px;
     text-align: center;
+}
+
+.errors-container {
+    padding: 10px;
+}
+
+.errors {
+    color: red;
+    font-size: 12px;
 }

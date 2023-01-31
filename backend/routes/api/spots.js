@@ -140,7 +140,8 @@ router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
 });
 
 router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
-   const spot = await Spot.findByPk(req.params.spotId);
+   const spotId = +req.params.spotId;
+   const spot = await Spot.findByPk(spotId);
    if (!spot) {
       res.status(404)
       return res.json({
