@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSpotDetails } from '../../store/spots';
 import { loadSpotReviews } from '../../store/reviews';
+import LoginFormModal from '../LoginFormModal';
+import SignupFormModal from '../SignupFormModal';
 import Bookings from '../Bookings';
 import './OneSpot.css';
 
@@ -45,35 +47,50 @@ function OneSpot() {
                         <img className="one-image" src={spot?.SpotImages[ 0 ]?.url} alt={spot?.name} />
                     </div>
                 </div>
-                <div className="bottom-container">
-                    <div className="spot-owner">Hub hosted by {spot.Owner.firstName}</div>
-                    <div className="spot-description">{spot.description}</div>
-                    <div className="spot-reviews">
-                        <div className="top-ratings">
-                            <div className="average-rating">
-                                {spot?.avgStarRating ? `★ ${Number(spot.avgStarRating).toFixed(1)}` : 'no reviews for this hub yet'}
+                <div className="bottom-container-split">
+                    <div className="bottom-container">
+                        <div className="spot-owner">Hub hosted by {spot.Owner.firstName}</div>
+                        <div className="spot-description">{spot.description}</div>
+                        <div className="spot-reviews">
+                            <div className="top-ratings">
+                                <div className="average-rating">
+                                    {spot?.avgStarRating ? `★ ${Number(spot.avgStarRating).toFixed(1)}` : 'no reviews for this hub yet'}
+                                </div>
+                                <span>•</span>
+                                <div className="number-rating">
+                                    {`${reviews?.length} reviews`}
+                                </div>
                             </div>
-                            <span>•</span>
-                            <div className="number-rating">
-                                {`${reviews?.length} reviews`}
+                            <div className="box-reviews">
+                                {reviews.map(review => (
+                                    <div className="user-reviews" key={review.id}>
+                                        <div className="review-top">
+                                            <div className="review-icon">
+                                                <i className="fa-solid fa-user" />
+                                            </div>
+                                            <div className="prof-content">
+                                                <div className="firstname">{review?.User?.firstName}</div>
+                                            </div>
+                                        </div>
+                                        <div className="link-review"><Link to={`/spots/${spot.id}/reviews`}>
+                                            {review?.review}
+                                        </Link></div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                        <div className="box-reviews">
-                            {reviews.map(review => (
-                                <div className="user-reviews" key={review.id}>
-                                    <div className="review-top">
-                                        <div className="review-icon">
-                                            <i className="fa-solid fa-user" />
-                                        </div>
-                                        <div className="prof-content">
-                                            <div className="firstname">{review?.User?.firstName}</div>
-                                        </div>
-                                    </div>
-                                    <div className="link-review"><Link to={`/spots/${spot.id}/reviews`}>
-                                        {review?.review}
-                                    </Link></div>
-                                </div>
-                            ))}
+                    </div>
+                    <div className="no-user-booking">
+                        <div className="bookings-main-container nu">
+                            <h1>Tiny Hub</h1>
+                            <p className="u-b-ptag">Please Login in order to view current bookings</p>
+                            <div className="u-b-btns">
+                                <LoginFormModal />
+                            </div>
+                            <p className="u-b-ptag">or sign up if you don't have an account.</p>
+                            <div className="u-b-btns">
+                                <SignupFormModal />
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -11,26 +11,26 @@ function Bookings({ spot, reviews }) {
     const dispatch = useDispatch();
 
     const bookingsObj = useSelector(state => state.bookings.allBooks);
+    const sessionUser = useSelector(state => state.session.user);
     const bookings = Object.values(bookingsObj);
 
     const [ value, onChange ] = useState(new Date());
+    const [ startDate, setStartDate ] = useState('');
+    const [ endDate, setEndDate ] = useState('');
     const [ days, setDays ] = useState(1);
     const [ showCalendar, setShowCalendar ] = useState(false);
+    const [ showLogin, setShowLogin ] = useState(false);
+    const [ showSignup, setShowSignup ] = useState(false);
 
     useEffect(() => {
         dispatch(getBookingsThunk(spot.id))
     }, [ dispatch, spot.id ])
 
+
+
     const shortDate = date => {
         date = new Intl.DateTimeFormat('en-US').format(date).toString()
         return date;
-    }
-
-    const randomFee = () => {
-        const min = 100
-        const max = 200
-        const randomized = Math.floor(Math.random() * (max - min) + min)
-        return randomized
     }
 
     const formattedPrice = price => {
@@ -41,6 +41,12 @@ function Bookings({ spot, reviews }) {
         servFee = Math.floor(servFee * days);
         const total = (price * stayDays) + cleanFee + servFee;
         return total.toFixed()
+    }
+
+    const calendarSubmit = e => {
+        e.preventDefault();
+
+
     }
 
     return (
@@ -60,43 +66,50 @@ function Bookings({ spot, reviews }) {
                     </div>
                 </div>
                 <div className="bookings-cal-container">
-                    <div className="bookings-ci">
+                    <div className="bookings-ci" onClick={() => setShowCalendar(!showCalendar)}>
                         <p>CHECK-IN</p>
-                        <p>{shortDate(new Date())}</p>
+                        <p>{shortDate(value)}</p>
                     </div>
-                    <div className="bookings-co">
+                    <div className="bookings-co" onClick={() => setShowCalendar(!showCalendar)}>
                         <p>CHECKOUT</p>
-                        <p>{shortDate(new Date())}</p>
+                        <p>{shortDate(value)}</p>
                     </div>
                 </div>
-                <div className="bookings-res-container">
-                    <div className="bookings-res-button">
-                        <button className="reserve-button">
-                            Reserve
-                        </button>
+                {showCalendar && (
+                    <Calendar
+                        value={value}
+                        onChange={onChange}
+                        returnValue="range"
+                    />
+                )}
+                    <div className="bookings-res-container">
+                        <div className="bookings-res-button">
+                            <button className="reserve-button">
+                                Reserve
+                            </button>
+                        </div>
+                        <div className="bookings-res-disclaimer">
+                            <p>You won't be charged yet</p>
+                        </div>
                     </div>
-                    <div className="bookings-res-disclaimer">
-                        <p>You won't be charged yet</p>
-                    </div>
-                </div>
                 <div className="bookings-fees-container">
                     <div className="bookings-fees-disclaimer">
-                        <p>{formattedPrice(spot.price)} x {days}</p>
-                        <p>Cleaning fee</p>
-                        <p>Service Fee</p>
+                        <p className="b-f-font">{formattedPrice(spot.price)} x {days}</p>
+                        <p className="b-f-font">Cleaning fee</p>
+                        <p className="b-f-font">Service Fee</p>
                     </div>
                     <div className="bookings-fees-totals">
-                        <p>${formattedPrice(spot.price) * days}</p>
-                        <p>${randomFee()}</p>
-                        <p>${formattedPrice(((spot.price * 0.142) * days))}</p>
+                        <p className="b-f-font">${formattedPrice(spot.price) * days}</p>
+                        <p className="b-f-font">$147</p>
+                        <p className="b-f-font">${formattedPrice(((spot.price * 0.142) * days))}</p>
                     </div>
                 </div>
                 <div className="bookings-total-container">
                     <div className="bookings-total-title">
-                        <p>Total before taxes</p>
+                        <p className="b-f-bold">Total before taxes</p>
                     </div>
                     <div className="bookings-total-price">
-                        <p>${totalFee(spot.price, days, (spot.price * 0.142), randomFee())}</p>
+                        <p className="b-f-bold">${totalFee(spot.price, days, (spot.price * 0.142), 147)}</p>
                     </div>
                 </div>
             </div>
