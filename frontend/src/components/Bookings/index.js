@@ -103,6 +103,7 @@ function Bookings({ spot, spotId, reviews }) {
         await dispatch(addBookingThunk(booking));
         await dispatch(getBookingsThunk(spotId));
         setShowCalendar(false);
+        history.push('/bookings')
         return
     }
 
