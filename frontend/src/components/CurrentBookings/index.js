@@ -76,9 +76,6 @@ function CurrentBookings() {
         }
     }
 
-    console.log('start', startDate);
-    console.log('end', endDate);
-
     const blockedDates = ({ activeStartDate, date, view }) => {
         const today = new Date()
         if (date.toDateString() === today.toDateString()) {
@@ -216,7 +213,7 @@ function CurrentBookings() {
                                 <button className="delete-cancel" onClick={() => setShowDel(false)}>
                                     Cancel
                                 </button>
-                                <button className="delete-btn" onClick={onDelete}>
+                                <button className="delete-btn-modal" onClick={onDelete}>
                                     Confirm
                                 </button>
                             </div>
