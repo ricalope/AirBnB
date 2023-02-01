@@ -22,7 +22,9 @@ function Bookings({ spot, spotId, reviews }) {
     const [ errors, setErrors ] = useState([]);
 
     useEffect(() => {
-        dispatch(getBookingsThunk(spotId))
+        (async () => {
+            await dispatch(getBookingsThunk(spotId))
+        })()
     }, [ dispatch ])
 
     useEffect(() => {

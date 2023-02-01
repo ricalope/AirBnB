@@ -122,3 +122,7 @@ div.nav-right > ul{
    width: 150px;
    padding: 10px;
 }
+
+h2 {
+    font-weight: 500;
+}

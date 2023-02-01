@@ -27,7 +27,8 @@ function LoginForm({ setShowModal }) {
    }
 
    return (
-      <div className="container">
+      <div className="login-container">
+        <h1>Tiny Hub</h1>
          <form onSubmit={handleSubmit}>
             <ul>
                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
