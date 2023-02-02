@@ -10,9 +10,10 @@ import logo from '../../assets/android-chrome-512x512.png';
 import './OneSpot.css';
 
 function OneSpot() {
-    const [ isLoaded, setIsLoaded ] = useState(false)
     const { spotId } = useParams();
     const dispatch = useDispatch();
+
+    const [ isLoaded, setIsLoaded ] = useState(false);
 
     useEffect(() => {
         dispatch(getSpotDetails(spotId))
@@ -49,7 +50,7 @@ function OneSpot() {
                 </div>
                 <div className="detail-image">
                     <div className="one-image-div">
-                        <img onError={onError} className="one-image" src={spot?.SpotImages[ 0 ]?.url} alt={spot?.name} />
+                    <img onError={onError} loading="lazy" className="one-image" src={spot?.SpotImages[0]?.url} alt={spot?.name} />
                     </div>
                 </div>
                 <div className="bottom-container-split">
@@ -129,7 +130,7 @@ function OneSpot() {
             </div>
             <div className="detail-image">
                 <div className="one-image-div">
-                    <img onError={onError} className="one-image" src={spot?.SpotImages[ 0 ]?.url} alt={spot?.name} />
+                    <img onError={onError} loading="lazy" className="one-image" src={spot?.SpotImages[0]?.url} alt={spot?.name} />
                 </div>
             </div>
             <div className="bottom-container-split">
