@@ -6,6 +6,7 @@ import { loadSpotReviews } from '../../store/reviews';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import Bookings from '../Bookings';
+import logo from '../../assets/android-chrome-512x512.png';
 import './OneSpot.css';
 
 function OneSpot() {
@@ -24,6 +25,10 @@ function OneSpot() {
     const reviewsObj = useSelector(state => state.reviews.spot);
 
     const reviews = Object.values(reviewsObj);
+
+    const onError = e => {
+        e.target.src = logo
+    }
 
     if (!user?.id) {
         return isLoaded && (
@@ -44,7 +49,7 @@ function OneSpot() {
                 </div>
                 <div className="detail-image">
                     <div className="one-image-div">
-                        <img className="one-image" src={spot?.SpotImages[ 0 ]?.url} alt={spot?.name} />
+                        <img onError={onError} className="one-image" src={spot?.SpotImages[ 0 ]?.url} alt={spot?.name} />
                     </div>
                 </div>
                 <div className="bottom-container-split">
@@ -124,7 +129,7 @@ function OneSpot() {
             </div>
             <div className="detail-image">
                 <div className="one-image-div">
-                    <img className="one-image" src={spot?.SpotImages[ 0 ]?.url} alt={spot?.name} />
+                    <img onError={onError} className="one-image" src={spot?.SpotImages[ 0 ]?.url} alt={spot?.name} />
                 </div>
             </div>
             <div className="bottom-container-split">
