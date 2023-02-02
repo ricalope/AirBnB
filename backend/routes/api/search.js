@@ -9,30 +9,78 @@ const { Op } = require('sequelize');
 router.use(express.json());
 
 router.get('/', async (req, res) => {
-    console.log('req.query',req.query)
-    const spots = req.query.spots;
-    let Spots = []
 
-    if (req.query.filter === "city") {
-        Spots =  await Spot.findAll({
-            where: { city: { [Op.like]: `%${spots}%` }  },
-            include: { model: SpotImage }
+    //DEVELOPMENT
+
+    // const { spots, filter } = req.query;
+
+    // let Spots = []
+    // let newSpot;
+
+    // if (filter === "city") {
+    //     newSpot = await Spot.findAll({
+    //         where: { city: { [Op.like]: `%${spots}%` } },
+    //         include: { model: SpotImage, attributes: [ 'url', 'preview' ] }
+    //     })
+    // } else if (filter === "state") {
+    //     newSpot = await Spot.findAll({
+    //         where: { state: { [Op.like]: `%${spots}%` } },
+    //         include: { model: SpotImage, attributes: [ 'url', 'preview' ] }
+    //     })
+    // } else if (filter === "address") {
+    //     newSpot = await Spot.findAll({
+    //         where: { address: { [Op.like]: `%${spots}%` } },
+    //         include: { model: SpotImage, attributes: [ 'url', 'preview' ] }
+    //     })
+    // }
+    // newSpot.forEach(s => Spots.push(s.toJSON()))
+    // Spots.forEach(spot => {
+    //     spot.SpotImages.forEach(pic => {
+    //         if (pic.preview === true) {
+    //             spot.imageUrl = pic.url
+
+    //         }
+    //     })
+    //     delete spot.SpotImages
+    // })
+
+    // return res.json({ Spots })
+
+    //PRODUCTION <-- COMMENT IN BELOW FOR PROD
+
+    const { spots, filter } = req.query;
+
+    let Spots = []
+    let newSpot;
+
+    if (filter === "city") {
+        newSpot = await Spot.findAll({
+            where: { city: { [Op.iLike]: `%${spots}%` } },
+            include: { model: SpotImage, attributes: [ 'url', 'preview' ] }
         })
-        return res.json({ Spots })
-    } else if (req.query.filter === "state") {
-        Spots = await Spot.findAll({
-            where: { state: { [Op.like]: `%${spots}%` } },
-            include: { model: SpotImage }
+    } else if (filter === "state") {
+        newSpot = await Spot.findAll({
+            where: { state: { [Op.iLike]: `%${spots}%` } },
+            include: { model: SpotImage, attributes: [ 'url', 'preview' ] }
         })
-        return res.json({ Spots })
-    } else if (req.query.filter === "address") {
-        Spots = await Spot.findAll({
-            where: { address: { [Op.like]: `%${spots}%` } },
-            include: { model: SpotImage }
+    } else if (filter === "address") {
+        newSpot = await Spot.findAll({
+            where: { address: { [Op.iLike]: `%${spots}%` } },
+            include: { model: SpotImage, attributes: [ 'url', 'preview' ] }
         })
-        return res.json({ Spots })
     }
-    else return res.json({})
+    newSpot.forEach(s => Spots.push(s.toJSON()))
+    Spots.forEach(spot => {
+        spot.SpotImages.forEach(pic => {
+            if (pic.preview === true) {
+                spot.imageUrl = pic.url
+
+            }
+        })
+        delete spot.SpotImages
+    })
+
+    return res.json({ Spots })
 });
 
 module.exports = router;

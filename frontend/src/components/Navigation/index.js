@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -23,69 +23,107 @@ function Navigation({ isLoaded }) {
     const [ filter, setFilter ] = useState('city');
     const [ result, setResult ] = useState(false);
 
+    useEffect(() => {
+        if (!result) return;
+        const closeMenu = () => {
+            setResult(false)
+            setSearch('')
+        }
+        document.addEventListener('click', closeMenu)
+        return () => document.removeEventListener('click', closeMenu)
+    }, [ result ])
+
     const submitSearch = async e => {
         e.preventDefault();
-        setResult(true);
-
-        console.log('search <<', search, '>> filter <<', filter, '>> in submit function')
+        setResult(true)
 
         const formData = {
             search,
             filter
         }
+
         await dispatch(searchSpotsThunk(formData))
+        setSearch('');
+        return
+    }
+
+    const onError = e => {
+        e.target.src = logo
     }
 
     return (
         <nav className="nav-bar">
             <div className="nav-left">
-                <img
-                    className="logo"
-                    src={logo}
-                    alt="tiny-hub-logo"
-                    style={{ width: 40, height: 40 }} />
-                <h1>tiny hub</h1>
+                <div className="nav-img-logo">
+                    <img
+                        className="logo"
+                        src={logo}
+                        alt="tiny-hub-logo"
+                        style={{ width: 40, height: 40 }} />
+                </div>
+                <div className="nav-th-logo">
+                    <h1>tiny hub</h1>
+                </div>
             </div>
             <div className="nav-center">
-                <form onSubmit={submitSearch}>
+                <form onSubmit={submitSearch} id="form-search">
                     <div className="search-bar-container">
-                        <input
-                            type="text"
-                            className="search-input"
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                        />
-                        <select
-                            className="search-dd"
-                            value={filter}
-                            onChange={(e) => setFilter(e.target.value)}
-                        >
-                            <option value="city">By City</option>
-                            <option value="state">By State</option>
-                            <option value="address">By Address</option>
-                        </select>
-                        <button type="submit">
-                            search
-                        </button>
+                        <div className="div-input">
+                            <input
+                                type="text"
+                                className="search-input"
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                            />
+                        </div>
+                        <div className="div-dd">
+                            <select
+                                className="search-dd"
+                                value={filter}
+                                onChange={(e) => setFilter(e.target.value)}
+                            >
+                                <option value="city">City</option>
+                                <option value="state">State</option>
+                                <option value="address">Address</option>
+                            </select>
+                        </div>
+                        <div className="div-submit">
+                            <button type="submit" id="sub-btn">
+                                <i className="fa-solid fa-magnifying-glass" />
+                            </button>
+                        </div>
                     </div>
                 </form>
-                {result && spots.length > 0 && (
+                {result && spots?.length > 0 && (
                     <div className="search-result">
                         {spots.map(spot => (
-                            <Link key={spot.id} exact="true" to={`/spots/${spot.id}`}>
+                            <Link
+                                key={spot.id}
+                                exact="true" to={`/spots/${spot.id}`}
+                                className="link-card"
+                                onClick={() => setResult(false)}>
                                 <div className="search-card">
                                     <div className="search-image">
-                                        
+                                        <img onError={onError} src={spot.imageUrl} alt="tiny house" id="img-icon" />
                                     </div>
-                                    <div className="search-city">
-                                        {spot.city}
-                                    </div>
-                                    <div className="search-state">
-                                        {spot.state}
+                                    <div className="city-state-wrapper">
+                                        <div className="search-city">
+                                            {spot.city},
+                                        </div>
+                                        &nbsp;
+                                        <div className="search-state">
+                                            {spot.state}
+                                        </div>
                                     </div>
                                 </div>
                             </Link>
                         ))}
+                    </div>
+                )}
+                {result && spots?.length === 0 && (
+                    <div className="search-result">
+                        no results found. <br />
+                        please try again.
                     </div>
                 )}
             </div>
