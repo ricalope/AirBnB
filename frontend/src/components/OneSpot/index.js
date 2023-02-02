@@ -89,7 +89,7 @@ function OneSpot() {
                     <div className="no-user-booking">
                         <div className="bookings-main-container nu">
                             <h1>Tiny Hub</h1>
-                            <p className="u-b-ptag">Please Login in order to view current bookings</p>
+                            <p className="u-b-ptag">Please Login in order to view book a tiny hub.</p>
                             <div className="u-b-btns">
                                 <LoginFormModal />
                             </div>
