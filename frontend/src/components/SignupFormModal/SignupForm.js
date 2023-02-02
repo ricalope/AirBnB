@@ -36,6 +36,7 @@ function SignupForm({ setShowModal }) {
 
    return (
       <div className="signup-container">
+        <h1>Tiny Hub</h1>
          <form onSubmit={handleSubmit}>
             <ul>
                {errors.map((error, idx) => (

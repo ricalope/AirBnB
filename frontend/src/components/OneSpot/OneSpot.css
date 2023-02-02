@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@300;400;500;600&display=swap');
-
 .detail-container {
    display: flex;
    flex-direction: column;
@@ -65,13 +63,12 @@ img.one-image {
    display: flex;
    flex-direction: column;
    gap: 10px;
-   border-bottom: 1px solid rgba(136, 136, 136, 0.4);
    margin-top: 10px;
 }
 
 .spot-owner {
    font-size: 25px;
-   font-weight: bold;
+   font-weight: 500;
 }
 
 .spot-description {
@@ -125,4 +122,9 @@ span {
 .firstname {
    font-size: 14px;
    font-weight: 500;
+}
+
+.bottom-container-split {
+    display: flex;
+    border-bottom: 1px solid rgba(136, 136, 136, 0.4);
 }

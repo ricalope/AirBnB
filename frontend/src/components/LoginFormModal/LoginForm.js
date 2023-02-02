@@ -20,14 +20,15 @@ function LoginForm({ setShowModal }) {
          });
    }
 
-   const demoUserLogin = () => {
-      setCredential("Demo-lition")
-      setPassword("password")
-      return dispatch(sessionActions.login({ credential, password }))
+   const demoUserLogin = async (user, pass) => {
+      setCredential(user)
+      setPassword(pass)
+      return
    }
 
    return (
-      <div className="container">
+      <div className="login-container">
+        <h1>Tiny Hub</h1>
          <form onSubmit={handleSubmit}>
             <ul>
                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -52,7 +53,7 @@ function LoginForm({ setShowModal }) {
             </label>
             <div className="button-div">
                <div className="log-in"><button type="submit">Log In</button></div>
-               <div className="sign-up"><button onClick={demoUserLogin}>Demo User</button></div>
+               <div className="sign-up"><button onClick={() => demoUserLogin('Demo-lition', 'password')}>Demo User</button></div>
             </div>
          </form>
       </div>

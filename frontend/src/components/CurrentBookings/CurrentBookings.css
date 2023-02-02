@@ -1,0 +1,124 @@
+.current-bookings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.current-header {
+    padding: 10px;
+}
+
+.current-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.current-booking-card {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    /* border: 1px solid gray; */
+}
+
+.c-c-image {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+#city-p {
+    font-size: 14px;
+}
+
+#date-p {
+    text-align: center;
+    height: 21px;
+}
+
+.curr-card-dates {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.city-date-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.curr-card-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-btn,
+.update-btn {
+    font-size: 9px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-btn:hover,
+.update-btn:hover {
+    color: #4b86b4;
+}
+
+.current-calendar {
+    border-radius: 8px;
+    padding: 10px;
+    background-color: white;
+    height: 400px;
+    max-width: 360px;
+}
+
+.current-dates-header {
+    padding: 10px 10px 5px 0;
+}
+
+.current-dates {
+    padding: 0 5px 5px 5px;
+}
+
+.close-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0 5px 0;
+}
+
+.close-cal:hover {
+    color: #4b86b4;
+}
+
+.book-input {
+    background-color: white;
+    border: none;
+    width: fit-content;
+}
+
+.current-delete {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.conf-del {
+    text-align: center;
+}
+
+.delete-cancel,
+.delete-btn-modal {
+    background-color: #4b86b4;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
