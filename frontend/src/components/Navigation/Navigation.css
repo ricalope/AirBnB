@@ -20,10 +20,25 @@ nav >.navbar {
    height: 75px;
 }
 
-div.nav-left {
+.nav-left {
    display: flex;
    align-items: center;
-   align-content: center;
+   padding: 5px;
+   width: 273px;
+}
+
+.nav-img-logo {
+    padding: 10px 5px 5px 5px;
+    align-self: center;
+}
+
+.nav-th-logo {
+    padding: 5px;
+}
+
+#form-search {
+    width: 100%;
+    padding: 5px;
 }
 
 .logo {
@@ -127,28 +142,95 @@ h2 {
     font-weight: 500;
 }
 
-.search-bar-container {
-    display: flex;
-    padding: 20px;
-}
-
 .nav-center {
     position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    width: 100%;
+}
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #4b86b4;
+    border-radius: 30px;
+    padding: 10px;
+    gap: 10px;
+}
+
+.div-input {
+    border-right: 1px solid #4b86b4;
+    width: 95%;
+}
+
+.search-input {
+    height: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 25px;
+}
+
+.search-dd {
+    border: none;
+    outline: none;
+}
+
+#sub-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .search-result {
     position: absolute;
-    top: 50px;
-    left: 18px;
+    top: 75px;
+    left: 250px;
     box-shadow: 0 0 6px black;
     background-color: white;
     border-radius: 5px;
-    padding: 10px;
-    width: 300px;
+    padding: 20px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .search-card {
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.search-card:hover {
+    box-shadow: 0 0 3px black;
+}
+
+.search-image {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.city-state-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.city-state-wrapper:hover {
+    color: #4b86b4;
+}
+
+#img-icon {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 5px;
 }
