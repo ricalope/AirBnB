@@ -126,3 +126,29 @@ div.nav-right > ul{
 h2 {
     font-weight: 500;
 }
+
+.search-bar-container {
+    display: flex;
+    padding: 20px;
+}
+
+.nav-center {
+    position: relative;
+}
+
+.search-result {
+    position: absolute;
+    top: 50px;
+    left: 18px;
+    box-shadow: 0 0 6px black;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+}
+
+.search-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

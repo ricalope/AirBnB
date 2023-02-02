@@ -6,7 +6,8 @@ module.exports = {
         dialect: "sqlite",
         seederStorage: "sequelize",
         logQueryParameters: true,
-        typeValidation: true
+        typeValidation: true,
+        logging: false
     },
     production: {
         use_env_variable: 'DATABASE_URL',
