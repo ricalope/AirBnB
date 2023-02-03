@@ -31,6 +31,7 @@ function EditSpot() {
             setName(data.name)
             setDescription(data.description)
             setPrice(data.price)
+            setIsLoaded(true)
         })()
     }, [ dispatch, isLoaded ]);
 

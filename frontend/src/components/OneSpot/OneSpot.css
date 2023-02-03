@@ -96,8 +96,8 @@ img.one-image {
 
 .average-rating,
 .number-rating {
-   font-weight: 600;
-   font-size: 18px;
+   font-weight: 500;
+   font-size: 16px;
 }
 
 span {
@@ -127,4 +127,12 @@ span {
 .bottom-container-split {
     display: flex;
     border-bottom: 1px solid rgba(136, 136, 136, 0.4);
+}
+
+.rev-link {
+    text-decoration: underline;
+}
+
+.rev-link:hover {
+    color: #4b86b4;
 }

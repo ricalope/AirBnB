@@ -50,7 +50,7 @@ function OneSpot() {
                 </div>
                 <div className="detail-image">
                     <div className="one-image-div">
-                    <img onError={onError} loading="lazy" className="one-image" src={spot?.SpotImages[0]?.url} alt={spot?.name} />
+                        <img onError={onError} loading="lazy" className="one-image" src={spot?.SpotImages[ 0 ]?.url} alt={spot?.name} />
                     </div>
                 </div>
                 <div className="bottom-container-split">
@@ -130,7 +130,7 @@ function OneSpot() {
             </div>
             <div className="detail-image">
                 <div className="one-image-div">
-                    <img onError={onError} loading="lazy" className="one-image" src={spot?.SpotImages[0]?.url} alt={spot?.name} />
+                    <img onError={onError} loading="lazy" className="one-image" src={spot?.SpotImages[ 0 ]?.url} alt={spot?.name} />
                 </div>
             </div>
             <div className="bottom-container-split">
@@ -149,7 +149,9 @@ function OneSpot() {
                             </div>
                             <span>•</span>
                             <div className="number-rating">
-                                {`${reviews?.length} reviews`}
+                                <Link exact="true" to={`/spots/${spot.id}/reviews`} className="rev-link">
+                                    {`${reviews?.length} reviews`}
+                                </Link>
                             </div>
                         </div>
                         <div className="box-reviews">
@@ -167,9 +169,7 @@ function OneSpot() {
                                         </div>
                                     </div>
                                     <div className="link-review">
-                                        <Link to={`/spots/${spot.id}/reviews`}>
-                                            {review?.review}
-                                        </Link>
+                                        {review?.review}
                                     </div>
                                 </div>
                             ))}
