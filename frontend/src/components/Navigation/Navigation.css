@@ -238,3 +238,10 @@ h2 {
 .book-link {
     text-decoration: underline;
 }
+
+.prof-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+}

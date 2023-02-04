@@ -3,8 +3,11 @@ import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSpotDetails } from '../../store/spots';
 import { loadSpotReviews } from '../../store/reviews';
+import DeleteReviewModal from '../DeleteReview/DeleteReviewModal';
+import EditSpotModal from '../EditSpot/EditSpotModal';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import DeleteSpotModal from '../DeleteSpot/DeleteSpotModal';
 import Bookings from '../Bookings';
 import logo from '../../assets/android-chrome-512x512.png';
 import './OneSpot.css';
@@ -13,19 +16,22 @@ function OneSpot() {
     const { spotId } = useParams();
     const dispatch = useDispatch();
 
+    const spot = useSelector(state => state.spots.oneSpot);
+    const user = useSelector(state => state.session.user);
+    const reviewsObj = useSelector(state => state.reviews.spot);
+
+    const reviews = Object.values(reviewsObj);
+
     const [ isLoaded, setIsLoaded ] = useState(false);
+    const [ showDel, setShowDel ] = useState(false);
+    const [ showEdit, setShowEdit ] = useState(false);
+    const [ showDelete, setShowDelete ] = useState(false);
 
     useEffect(() => {
         dispatch(getSpotDetails(spotId))
         dispatch(loadSpotReviews(spotId))
             .then(() => setIsLoaded(true))
     }, [ dispatch, spotId ]);
-
-    const spot = useSelector(state => state.spots.oneSpot);
-    const user = useSelector(state => state.session.user);
-    const reviewsObj = useSelector(state => state.reviews.spot);
-
-    const reviews = Object.values(reviewsObj);
 
     const onError = e => {
         e.target.src = logo
@@ -111,20 +117,46 @@ function OneSpot() {
             <div className="detail-top">
                 <div className="spot-name"><h2>{spot?.name}</h2></div>
                 <div className="detail-top-bottom">
-                    <div className="spot-rating">
-                        {`★ ${spot?.avgStarRating ? Number(spot?.avgStarRating).toFixed(1) : ' 0'}`}
-                    </div>
-                    <span>•</span>
-                    <div>{`${reviews.length} reviews`}</div>
-                    <span>•</span>
-                    <div className="spot-location">
-                        {`${spot?.city}, ${spot?.state} ${spot?.country}`}
-                    </div>
-                    {user?.id === spot?.ownerId && (
-                        <div className="edit-delete-links">
-                            <p id="edit"><Link to={`/spots/${spot?.id}/edit`}>edit hub</Link></p>
-                            <p id="del"><Link to={`/spots/${spot?.id}/delete`}>delete hub</Link></p>
+                    <div className="detail-wrapper">
+                        <div className="spot-rating">
+                            {`★ ${spot?.avgStarRating ? Number(spot?.avgStarRating).toFixed(1) : ' 0'}`}
                         </div>
+                        <span>•</span>
+                        <div className="spot-rev">
+                            {`${reviews.length} ${reviews.length === 1 ? 'review' : 'reviews'}`}
+                        </div>
+                        <span>•</span>
+                        <div className="spot-location">
+                            {`${spot?.city}, ${spot?.state} ${spot?.country}`}
+                        </div>
+                    </div>
+                    <div className="spot-wrapper">
+                        {user?.id === spot?.ownerId && (
+                            <div className="edit-delete-links">
+                                <button className="edit-spot-btn" onClick={() => setShowEdit(true)}>
+                                    <p id="edit">
+                                        edit hub
+                                    </p>
+                                </button>
+                                <button className="edit-spot-btn" onClick={() => setShowDelete(true)}>
+                                    <p id="del">
+                                        delete hub
+                                    </p>
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                    {showEdit && (
+                        <EditSpotModal
+                            showEdit={showEdit}
+                            setShowEdit={setShowEdit}
+                        />
+                    )}
+                    {showDelete && (
+                        <DeleteSpotModal
+                            showDelete={showDelete}
+                            setShowDelete={setShowDelete}
+                        />
                     )}
                 </div>
             </div>
@@ -163,9 +195,13 @@ function OneSpot() {
                                         </div>
                                         <div className="prof-content">
                                             <div className="firstname">{review?.User?.firstName}</div>
-                                            <div className="remove"><p>{user.id === review.userId && (
-                                                <Link to={`/reviews/${review.id}/delete`}>delete review</Link>
-                                            )}</p></div>
+                                            <div className="remove">
+                                                {user.id === review.userId && (
+                                                    <button className="del-rev-btn" onClick={() => setShowDel(true)}>
+                                                        <p>delete review</p>
+                                                    </button>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="link-review">
@@ -173,16 +209,24 @@ function OneSpot() {
                                     </div>
                                 </div>
                             ))}
+                            {showDel && (
+                                <DeleteReviewModal
+                                    showDel={showDel}
+                                    setShowDel={setShowDel}
+                                />
+                            )}
                         </div>
                     </div>
                 </div>
-                <div className="bookings-container">
-                    <Bookings
-                        spot={spot}
-                        spotId={spot.id}
-                        reviews={reviews}
-                    />
-                </div>
+                {user.id !== spot.ownerId && (
+                    <div className="bookings-container">
+                        <Bookings
+                            spot={spot}
+                            spotId={spot.id}
+                            reviews={reviews}
+                        />
+                    </div>
+                )}
             </div>
         </div>
     );

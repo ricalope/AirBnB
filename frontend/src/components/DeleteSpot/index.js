@@ -3,34 +3,34 @@ import { useHistory, useParams } from 'react-router-dom';
 import { deleteOneSpot } from '../../store/spots';
 import './DeleteSpot.css'
 
-function DeleteSpot() {
-   const { spotId } = useParams();
-   const dispatch = useDispatch();
-   const history = useHistory();
+function DeleteSpot({ setShowDelete }) {
+    
+    const { spotId } = useParams();
+    const dispatch = useDispatch();
 
-   const onSubmit = () => {
-      dispatch(deleteOneSpot(spotId));
-      history.push('/');
-   }
+    const onSubmit = () => {
+        dispatch(deleteOneSpot(spotId));
+        setShowDelete(false)
+    }
 
-   const onCancel = () => {
-      history.push(`/spots/${spotId}`);
-   }
+    const onCancel = () => {
+        setShowDelete(false)
+    }
 
-   return (
-      <div className="delete-container">
-         <div className="delete-content">
-            <h2>Confirm delete hub</h2>
-            <h5 className="haiku">
-               Please confirm if you would like to delete this hub
-            </h5>
-            <div className="delete-buttons">
-               <button className="confirm-delete" onClick={onCancel}>Cancel</button>
-               <button className="cancel-delete" onClick={onSubmit}>Confirm Deletion</button>
+    return (
+        <div className="delete-container">
+            <div className="delete-content">
+                <h2>Confirm delete hub</h2>
+                <h5 className="haiku">
+                    Please confirm if you would like to delete this hub
+                </h5>
+                <div className="delete-buttons">
+                    <button className="confirm-delete" onClick={onCancel}>Cancel</button>
+                    <button className="cancel-delete" onClick={onSubmit}>Confirm Deletion</button>
+                </div>
             </div>
-         </div>
-      </div>
-   );
+        </div>
+    );
 }
 
 export default DeleteSpot;

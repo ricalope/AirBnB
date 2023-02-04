@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
+import AddSpotModal from '../AddSpot/AddSpotModal';
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user, setLogin, setShowModal }) {
+
     const dispatch = useDispatch();
     const history = useHistory();
+
     const [ showMenu, setShowMenu ] = useState(false);
+    const [ showAdd, setShowAdd ] = useState(false);
 
     const openMenu = () => {
         if (showMenu) return;
@@ -56,12 +60,16 @@ function ProfileButton({ user, setLogin, setShowModal }) {
                         </div>
                         <div className="profile-create">
                             <li>
-                                <Link to="/spots/new">Create a Tiny Hub</Link>
+                                <button className="prof-btn" onClick={() => setShowAdd(true)}>
+                                    Create a new Hub
+                                </button>
                             </li>
                         </div>
                         <div className="profile-logout">
                             <li>
-                                <button onClick={logout}>Log Out</button>
+                                <button onClick={logout}>
+                                    Log Out
+                                </button>
                             </li>
                         </div>
                     </div>
@@ -86,6 +94,12 @@ function ProfileButton({ user, setLogin, setShowModal }) {
                         </li>
                     </div>
                 </ul>
+            )}
+            {showAdd && (
+                <AddSpotModal
+                    showAdd={showAdd}
+                    setShowAdd={setShowAdd}
+                />
             )}
         </div>
     );

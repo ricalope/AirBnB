@@ -10,7 +10,7 @@ import EditSpot from './components/EditSpot';
 import DeleteSpot from './components/DeleteSpot';
 import Reviews from './components/Reviews';
 import AddReview from './components/AddReview';
-import DeleteReview from './components/Reviews/DeleteReview';
+import DeleteReview from './components/DeleteReview';
 import CurrentBookings from './components/CurrentBookings';
 
 function App() {

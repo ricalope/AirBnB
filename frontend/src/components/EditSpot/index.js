@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { editSpotDetails } from '../../store/spots';
 import './EditSpot.css';
 
-function EditSpot() {
+function EditSpot({ setShowEdit }) {
     const { spotId } = useParams();
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const spot = useSelector(state => state.spots.oneSpot);
 
@@ -52,12 +51,12 @@ function EditSpot() {
         }
         const editedSpot = await dispatch(editSpotDetails(updatedData, spotId))
         if (editedSpot) {
-            history.push(`/spots/${spotId}`);
+            setShowEdit(false)
         }
     }
 
     const onCancel = () => {
-        history.push(`/spots/${spotId}`)
+        setShowEdit(false)
     }
 
     return isLoaded && (
