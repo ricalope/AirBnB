@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addSpotReview, loadSpotReviews } from '../../store/reviews';
+import { getSpotDetails } from '../../store/spots';
 import './AddReview.css';
 
 function AddReview({ spotId, setShowAdd }) {
@@ -33,8 +34,10 @@ function AddReview({ spotId, setShowAdd }) {
             stars
         }
         const newReview = await dispatch(addSpotReview(formValues))
+        console.log(newReview)
         if (newReview) {
             await dispatch(loadSpotReviews(spotId))
+            await dispatch(getSpotDetails(spotId))
             setReview("");
             setStars("");
             setShowAdd(false)
