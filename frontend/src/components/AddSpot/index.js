@@ -51,16 +51,18 @@ function AddSpot({ setShowAdd }) {
         if (addedSpot) {
             dispatch(addNewSpotImage({ spotId: addedSpot.id, url: imageUrl, preview: true }))
             history.push(`/spots/${addedSpot.id}`);
+            setAddress("");
+            setCity("");
+            setState("");
+            setCountry("");
+            setName("");
+            setDescription("");
+            setPrice(0);
+            setImageUrl("");
+            setShowAdd(false)
+            return
         }
-        setAddress("");
-        setCity("");
-        setState("");
-        setCountry("");
-        setName("");
-        setDescription("");
-        setPrice(0);
-        setImageUrl("");
-        setShowAdd(false)
+
     }
 
     const onCancel = () => {
@@ -89,6 +91,7 @@ function AddSpot({ setShowAdd }) {
                         Address
                         <input
                             type="text"
+                            className="inputs"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                         />
@@ -97,6 +100,7 @@ function AddSpot({ setShowAdd }) {
                         City
                         <input
                             type="text"
+                            className="inputs"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                         />
@@ -105,6 +109,7 @@ function AddSpot({ setShowAdd }) {
                         State
                         <input
                             type="text"
+                            className="inputs"
                             value={state}
                             onChange={(e) => setState(e.target.value)}
                         />
@@ -113,6 +118,7 @@ function AddSpot({ setShowAdd }) {
                         Country
                         <input
                             type="text"
+                            className="inputs"
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                         />
@@ -121,6 +127,7 @@ function AddSpot({ setShowAdd }) {
                         Name
                         <input
                             type="text"
+                            className="inputs"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
@@ -129,6 +136,7 @@ function AddSpot({ setShowAdd }) {
                         Description
                         <input
                             type="text"
+                            className="inputs"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                         />
@@ -137,6 +145,7 @@ function AddSpot({ setShowAdd }) {
                         Price
                         <input
                             type="number"
+                            className="inputs"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                         />
@@ -145,6 +154,7 @@ function AddSpot({ setShowAdd }) {
                         Image
                         <input
                             type="url"
+                            className="inputs"
                             value={imageUrl}
                             onChange={(e) => setImageUrl(e.target.value)}
                         />

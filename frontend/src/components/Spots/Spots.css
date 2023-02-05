@@ -28,7 +28,7 @@ html {
 }
 
 .spots-card:active {
-   box-shadow: none;
+    box-shadow: inset 1px 1px 1px rgba(0,0,0,0.2);
 }
 
 img.spot-image {

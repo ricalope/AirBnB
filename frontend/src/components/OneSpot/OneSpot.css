@@ -24,7 +24,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 5px;
-    width: 700px;
+    width: 760px;
 }
 
 .detail-wrapper {
@@ -170,4 +170,22 @@ span {
 
 .spot-rev {
     font-size: 13px;
+}
+
+.detail-top-nouser {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 800px;
+}
+
+.add-rev-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.add-rev-btn:hover {
+    color: #4b86b4
 }

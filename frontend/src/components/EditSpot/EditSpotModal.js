@@ -2,7 +2,9 @@ import { Modal } from '../../context/Modal';
 import EditSpot from './index';
 
 
-function EditSpotModal({ showEdit, setShowEdit }) {
+function EditSpotModal({ spotId, showEdit, setShowEdit }) {
+
+    console.log(spotId)
 
     return (
         <>

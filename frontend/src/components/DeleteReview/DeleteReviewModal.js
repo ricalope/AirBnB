@@ -2,13 +2,13 @@ import { Modal } from '../../context/Modal';
 import DeleteReview from './index';
 
 
-function DeleteReviewModal({ showDel, setShowDel }) {
+function DeleteReviewModal({ spotId, reviewId, showDel, setShowDel }) {
 
     return (
         <>
             {showDel && (
                 <Modal onClose={() => setShowDel(false)}>
-                    <DeleteReview setShowDel={setShowDel} />
+                    <DeleteReview setShowDel={setShowDel} reviewId={reviewId} spotId={spotId} />
                 </Modal>
             )}
         </>

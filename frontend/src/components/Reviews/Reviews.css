@@ -72,6 +72,10 @@
     color: #4b86b4;
 }
 
+.back-btn:hover {
+    color: #175482;
+}
+
 .del-rev-btn {
     background-color: transparent;
     border: none;

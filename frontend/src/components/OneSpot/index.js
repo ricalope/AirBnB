@@ -8,6 +8,7 @@ import EditSpotModal from '../EditSpot/EditSpotModal';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import DeleteSpotModal from '../DeleteSpot/DeleteSpotModal';
+import AddReviewModal from '../AddReview/AddReviewModal';
 import Bookings from '../Bookings';
 import logo from '../../assets/android-chrome-512x512.png';
 import './OneSpot.css';
@@ -26,11 +27,14 @@ function OneSpot() {
     const [ showDel, setShowDel ] = useState(false);
     const [ showEdit, setShowEdit ] = useState(false);
     const [ showDelete, setShowDelete ] = useState(false);
+    const [ showAdd, setShowAdd ] = useState(false);
 
     useEffect(() => {
-        dispatch(getSpotDetails(spotId))
-        dispatch(loadSpotReviews(spotId))
-            .then(() => setIsLoaded(true))
+        (async () => {
+            await dispatch(getSpotDetails(spotId))
+            await dispatch(loadSpotReviews(spotId))
+            setIsLoaded(true)
+        })()
     }, [ dispatch, spotId ]);
 
     const onError = e => {
@@ -42,15 +46,15 @@ function OneSpot() {
             <div className="detail-container">
                 <div className="detail-top">
                     <div className="spot-name"><h2>{spot?.name}</h2></div>
-                    <div className="detail-top-bottom">
+                    <div className="detail-top-nouser">
                         <div className="spot-rating">
                             {`★ ${spot?.avgStarRating ? Number(spot?.avgStarRating).toFixed(1) : ' 0'}`}
                         </div>
                         <span>•</span>
-                        <div>{`${reviews.length} reviews`}</div>
+                        <div className="spot-rev">{`${reviews.length} ${reviews.length === 1 ? 'review' : 'reviews'}`}</div>
                         <span>•</span>
                         <div className="spot-location">
-                            {`${spot?.city}, ${spot?.state} ${spot?.country}`}
+                            {`${spot?.city}, ${spot?.state}, ${spot?.country}`}
                         </div>
                     </div>
                 </div>
@@ -70,7 +74,7 @@ function OneSpot() {
                                 </div>
                                 <span>•</span>
                                 <div className="number-rating">
-                                    {`${reviews?.length} reviews`}
+                                    {`${reviews?.length} ${reviews.length === 1 ? 'review' : 'reviews'}`}
                                 </div>
                             </div>
                             <div className="box-reviews">
@@ -95,7 +99,7 @@ function OneSpot() {
                     <div className="no-user-booking">
                         <div className="bookings-main-container nu">
                             <h1>Tiny Hub</h1>
-                            <p className="u-b-ptag">Please Login in order to view book a tiny hub.</p>
+                            <p className="u-b-ptag">Please Login in order to book a tiny hub reservation.</p>
                             <div className="u-b-btns">
                                 <LoginFormModal />
                             </div>
@@ -127,7 +131,7 @@ function OneSpot() {
                         </div>
                         <span>•</span>
                         <div className="spot-location">
-                            {`${spot?.city}, ${spot?.state} ${spot?.country}`}
+                            {`${spot?.city}, ${spot?.state}, ${spot?.country}`}
                         </div>
                     </div>
                     <div className="spot-wrapper">
@@ -146,19 +150,20 @@ function OneSpot() {
                             </div>
                         )}
                     </div>
-                    {showEdit && (
-                        <EditSpotModal
-                            showEdit={showEdit}
-                            setShowEdit={setShowEdit}
-                        />
-                    )}
-                    {showDelete && (
-                        <DeleteSpotModal
-                            showDelete={showDelete}
-                            setShowDelete={setShowDelete}
-                        />
-                    )}
                 </div>
+                {showEdit && (
+                    <EditSpotModal
+                        showEdit={showEdit}
+                        setShowEdit={setShowEdit}
+                    />
+                )}
+                {showDelete && (
+                    <DeleteSpotModal
+                        spotId={spot.id}
+                        showDelete={showDelete}
+                        setShowDelete={setShowDelete}
+                    />
+                )}
             </div>
             <div className="detail-image">
                 <div className="one-image-div">
@@ -171,7 +176,9 @@ function OneSpot() {
                     <div className="spot-description">{spot.description}</div>
                     {user?.id !== spot?.ownerId && !existingReview && (
                         <div className="add-review">
-                            <Link to={`/spots/${spot?.id}/reviews/new`}>Leave a review</Link>
+                            <button className="add-rev-btn" onClick={() => setShowAdd(true)}>
+                                Leave a review
+                            </button>
                         </div>
                     )}
                     <div className="spot-reviews">
@@ -203,21 +210,31 @@ function OneSpot() {
                                                 )}
                                             </div>
                                         </div>
+                                        {showDel && (
+                                            <DeleteReviewModal
+                                                spotId={spot.id}
+                                                reviewId={review.id}
+                                                showDel={showDel}
+                                                setShowDel={setShowDel}
+                                            />
+                                        )}
                                     </div>
                                     <div className="link-review">
                                         {review?.review}
                                     </div>
                                 </div>
                             ))}
-                            {showDel && (
-                                <DeleteReviewModal
-                                    showDel={showDel}
-                                    setShowDel={setShowDel}
-                                />
-                            )}
+
                         </div>
                     </div>
                 </div>
+                {showAdd && (
+                    <AddReviewModal
+                        spotId={spot.id}
+                        showAdd={showAdd}
+                        setShowAdd={setShowAdd}
+                    />
+                )}
                 {user.id !== spot.ownerId && (
                     <div className="bookings-container">
                         <Bookings
@@ -228,6 +245,7 @@ function OneSpot() {
                     </div>
                 )}
             </div>
+
         </div>
     );
 }

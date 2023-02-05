@@ -1,13 +1,12 @@
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { deleteSpotReview } from '../../store/reviews';
+import { deleteSpotReview, loadSpotReviews } from '../../store/reviews';
 
-function DeleteReview({ setShowDel }) {
-    const { reviewId } = useParams();
+function DeleteReview({ setShowDel, reviewId, spotId }) {
     const dispatch = useDispatch();
 
-    const onSubmit = () => {
-        dispatch(deleteSpotReview(reviewId));
+    const onSubmit = async () => {
+        await dispatch(deleteSpotReview(reviewId));
+        await dispatch(loadSpotReviews(spotId))
         setShowDel(false)
     }
 

@@ -245,3 +245,7 @@ h2 {
     cursor: pointer;
     text-decoration: underline;
 }
+
+.fa-house:hover {
+    color: #6699cc;
+}

@@ -1,15 +1,16 @@
 import { useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { deleteOneSpot } from '../../store/spots';
 import './DeleteSpot.css'
 
-function DeleteSpot({ setShowDelete }) {
-    
-    const { spotId } = useParams();
-    const dispatch = useDispatch();
+function DeleteSpot({ setShowDelete, spotId }) {
 
-    const onSubmit = () => {
-        dispatch(deleteOneSpot(spotId));
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const onSubmit = async () => {
+        await dispatch(deleteOneSpot(spotId));
+        history.push('/spots')
         setShowDelete(false)
     }
 

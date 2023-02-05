@@ -123,6 +123,7 @@ export default function spotsReducer(state = initialState, action) {
          return newState;
       }
       case GET_ONE_SPOT: {
+        console.log('action', action)
          const newState = { ...state, allSpots: { ...state.allSpots }, oneSpot: { ...state.oneSpot } }
          newState.oneSpot = action.spot
          return newState;
