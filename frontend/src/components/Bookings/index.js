@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getBookingsThunk, addBookingThunk } from '../../store/bookings';
 import Calendar from 'react-calendar';
 import './Bookings.css';
@@ -41,15 +42,15 @@ function Bookings({ spot, spotId, reviews }) {
 
     useEffect(() => {
         for (let bookId in bookingsObj) {
-            const start = new Date(bookingsObj[bookId].startDate);
-            const end = new Date(bookingsObj[bookId].endDate);
+            const start = new Date(bookingsObj[ bookId ].startDate);
+            const end = new Date(bookingsObj[ bookId ].endDate);
 
             if (start >= new Date(value[ 0 ]) && start <= new Date(value[ 1 ])) {
-                setErrors(['Spot has already been booked for these dates. Please select different dates.'])
+                setErrors([ 'Spot has already been booked for these dates. Please select different dates.' ])
                 return
             }
             if (end >= new Date(value[ 0 ]) && end <= new Date(value[ 1 ])) {
-                setErrors(['Spot has already been booked for these dates. Please select different dates.'])
+                setErrors([ 'Spot has already been booked for these dates. Please select different dates.' ])
                 return
             }
         }
@@ -138,7 +139,9 @@ function Bookings({ spot, spotId, reviews }) {
                             {`★ ${spot?.avgStarRating ? Number(spot?.avgStarRating).toFixed(1) : ' 0'}`}
                         </div>
                         <span>•</span>
-                        <div className="bookings-rev">{`${reviews.length} reviews`}</div>
+                        <Link exact="true" to={`/spots/${spot.id}/reviews`} className="rev-link">
+                            <div className="bookings-rev">{`${reviews.length} reviews`}</div>
+                        </Link>
                     </div>
                 </div>
                 <form onSubmit={calendarSubmit}>

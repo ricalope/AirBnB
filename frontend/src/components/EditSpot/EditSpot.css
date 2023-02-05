@@ -9,7 +9,7 @@
 .edit-form {
    border-radius: 10px;
    box-shadow: 0 0 4px rgba(125, 125, 125, 0.5);
-   padding: 50px;
+   padding: 30px;
    width: 400px;
 }
 
@@ -31,4 +31,12 @@
 .cancel-edit:hover,
 .edit-button:hover {
    background-color: #4b86b4;
+}
+
+.inputs {
+    height: 30px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 5px;
 }

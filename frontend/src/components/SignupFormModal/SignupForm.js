@@ -47,6 +47,7 @@ function SignupForm({ setShowModal }) {
                Email
                <input
                   type="text"
+                  className="inputs"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -56,6 +57,7 @@ function SignupForm({ setShowModal }) {
                Username
                <input
                   type="text"
+                  className="inputs"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   required
@@ -65,6 +67,7 @@ function SignupForm({ setShowModal }) {
                First Name
                <input
                   type="text"
+                  className="inputs"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   required
@@ -74,6 +77,7 @@ function SignupForm({ setShowModal }) {
                Last Name
                <input
                   type="text"
+                  className="inputs"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   required
@@ -83,6 +87,7 @@ function SignupForm({ setShowModal }) {
                Password
                <input
                   type="password"
+                  className="inputs"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -92,6 +97,7 @@ function SignupForm({ setShowModal }) {
                Confirm Password
                <input
                   type="password"
+                  className="inputs"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required

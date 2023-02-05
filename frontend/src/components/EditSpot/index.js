@@ -1,28 +1,26 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { editSpotDetails } from '../../store/spots';
+import { editSpotDetails, getSpotDetails } from '../../store/spots';
 import './EditSpot.css';
 
-function EditSpot() {
-    const { spotId } = useParams();
+function EditSpot({ setShowEdit }) {
+
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const spot = useSelector(state => state.spots.oneSpot);
 
-    const [ address, setAddress ] = useState(spot.address);
-    const [ city, setCity ] = useState(spot.city);
-    const [ state, setState ] = useState(spot.state);
-    const [ country, setCountry ] = useState(spot.country);
-    const [ name, setName ] = useState(spot.name);
-    const [ description, setDescription ] = useState(spot.description);
-    const [ price, setPrice ] = useState(spot.price);
+    const [ address, setAddress ] = useState('');
+    const [ city, setCity ] = useState('');
+    const [ state, setState ] = useState('');
+    const [ country, setCountry ] = useState('');
+    const [ name, setName ] = useState('');
+    const [ description, setDescription ] = useState('');
+    const [ price, setPrice ] = useState(0);
     const [ isLoaded, setIsLoaded ] = useState(false)
 
     useEffect(() => {
         (async () => {
-            const res = await fetch(`/api/spots/${spotId}`)
+            const res = await fetch(`/api/spots/${spot.id}`)
             const data = await res.json()
             setAddress(data.address)
             setCity(data.city)
@@ -31,8 +29,9 @@ function EditSpot() {
             setName(data.name)
             setDescription(data.description)
             setPrice(data.price)
+            setIsLoaded(true)
         })()
-    }, [ dispatch, isLoaded ]);
+    }, []);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -49,14 +48,15 @@ function EditSpot() {
             description,
             price
         }
-        const editedSpot = await dispatch(editSpotDetails(updatedData, spotId))
+        const editedSpot = await dispatch(editSpotDetails(updatedData, spot.id))
         if (editedSpot) {
-            history.push(`/spots/${spotId}`);
+            await dispatch(getSpotDetails(spot.id))
+            setShowEdit(false)
         }
     }
 
     const onCancel = () => {
-        history.push(`/spots/${spotId}`)
+        setShowEdit(false)
     }
 
     return isLoaded && (
@@ -70,6 +70,7 @@ function EditSpot() {
                         Address
                         <input
                             type="text"
+                            className="inputs"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                         />
@@ -78,6 +79,7 @@ function EditSpot() {
                         City
                         <input
                             type="text"
+                            className="inputs"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                         />
@@ -86,6 +88,7 @@ function EditSpot() {
                         State
                         <input
                             type="text"
+                            className="inputs"
                             value={state}
                             onChange={(e) => setState(e.target.value)}
                         />
@@ -94,6 +97,7 @@ function EditSpot() {
                         Country
                         <input
                             type="text"
+                            className="inputs"
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                         />
@@ -102,6 +106,7 @@ function EditSpot() {
                         Name
                         <input
                             type="text"
+                            className="inputs"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
@@ -110,6 +115,7 @@ function EditSpot() {
                         Description
                         <input
                             type="text"
+                            className="inputs"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                         />
@@ -118,6 +124,7 @@ function EditSpot() {
                         Price
                         <input
                             type="number"
+                            className="inputs"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                         />

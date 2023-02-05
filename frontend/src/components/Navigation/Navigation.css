@@ -234,3 +234,18 @@ h2 {
     object-fit: cover;
     border-radius: 5px;
 }
+
+.book-link {
+    text-decoration: underline;
+}
+
+.prof-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.fa-house:hover {
+    color: #6699cc;
+}

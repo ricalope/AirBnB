@@ -4,170 +4,182 @@ import { useHistory } from 'react-router-dom';
 import { addNewSpot, addNewSpotImage } from '../../store/spots';
 import './AddSpot.css';
 
-function AddSpot() {
-   const dispatch = useDispatch();
-   const history = useHistory();
+function AddSpot({ setShowAdd }) {
+    const dispatch = useDispatch();
+    const history = useHistory();
 
-   const [ address, setAddress ] = useState("");
-   const [ city, setCity ] = useState("");
-   const [ state, setState ] = useState("");
-   const [ country, setCountry ] = useState("");
-   const [ name, setName ] = useState("");
-   const [ description, setDescription ] = useState("");
-   const [ price, setPrice ] = useState(0);
-   const [ imageUrl, setImageUrl ] = useState("");
-   const [ errors, setErrors ] = useState([]);
-   const [ submitted, setSubmitted ] = useState(false);
+    const [ address, setAddress ] = useState("");
+    const [ city, setCity ] = useState("");
+    const [ state, setState ] = useState("");
+    const [ country, setCountry ] = useState("");
+    const [ name, setName ] = useState("");
+    const [ description, setDescription ] = useState("");
+    const [ price, setPrice ] = useState(0);
+    const [ imageUrl, setImageUrl ] = useState("");
+    const [ errors, setErrors ] = useState([]);
+    const [ submitted, setSubmitted ] = useState(false);
 
-   useEffect(() => {
-      const errors = [];
-      if (!address.length) errors.push("* Please provide a valid address.");
-      if (!city.length) errors.push("* Please provide a valid city.");
-      if (!state.length) errors.push("* Please provide a valid state.");
-      if (!country.length) errors.push("* Please provide a valid Country.");
-      if (!name.length) errors.push("* Please provide a valid name for your spot.");
-      if (!description.length) errors.push("* Please provide a valid description for your spot.");
-      if (!price || price <= 0) errors.push("* Please provide a valid price per night.");
-      setErrors(errors);
-   }, [ address, city, state, country, name, description, price, imageUrl ]);
+    useEffect(() => {
+        const errors = [];
+        if (!address.trim().length) errors.push("* Please provide a valid address.");
+        if (!city.trim().length) errors.push("* Please provide a valid city.");
+        if (!state.trim().length) errors.push("* Please provide a valid state.");
+        if (!country.trim().length) errors.push("* Please provide a valid Country.");
+        if (!name.trim().length) errors.push("* Please provide a valid name for your spot.");
+        if (!description.trim().length) errors.push("* Please provide a valid description for your spot.");
+        if (!price || price <= 0) errors.push("* Please provide a valid price per night.");
+        setErrors(errors);
+    }, [ address, city, state, country, name, description, price, imageUrl ]);
 
-   const onSubmit = async e => {
-      e.preventDefault();
+    const onSubmit = async e => {
+        e.preventDefault();
 
-      setSubmitted(true);
+        setSubmitted(true);
 
-      const formValues = {
-         address,
-         city,
-         state,
-         country,
-         lat: 50,
-         lng: 50,
-         name,
-         description,
-         price
-      }
-      const addedSpot = await dispatch(addNewSpot(formValues))
-      if (addedSpot) {
-         dispatch(addNewSpotImage({ spotId: addedSpot.id, url: imageUrl, preview: true }))
-         history.push(`/spots/${addedSpot.id}`);
-      }
-      setAddress("");
-      setCity("");
-      setState("");
-      setCountry("");
-      setName("");
-      setDescription("");
-      setPrice(0);
-      setImageUrl("");
-   }
+        const formValues = {
+            address,
+            city,
+            state,
+            country,
+            lat: 50,
+            lng: 50,
+            name,
+            description,
+            price
+        }
+        const addedSpot = await dispatch(addNewSpot(formValues))
+        if (addedSpot) {
+            dispatch(addNewSpotImage({ spotId: addedSpot.id, url: imageUrl, preview: true }))
+            history.push(`/spots/${addedSpot.id}`);
+            setAddress("");
+            setCity("");
+            setState("");
+            setCountry("");
+            setName("");
+            setDescription("");
+            setPrice(0);
+            setImageUrl("");
+            setShowAdd(false)
+            return
+        }
 
-   const onCancel = () => {
-      history.push('/');
-   }
+    }
 
-   return (
-      <div className="create-container">
-         <div className="create-header">
-            <h2>Create a New Tiny Hub</h2>
-         </div>
-         <div className="create-form">
-            <form onSubmit={onSubmit}>
-               {submitted && errors.length > 0 && (
-                  <div className="errors">
-                     <ul>
-                        {errors.map((error, idx) => (
-                           <li key={idx}>
-                              {error}
-                           </li>
-                        ))}
-                     </ul>
-                  </div>
-               )}
-               <label>
-                  Address
-                  <input
-                     type="text"
-                     value={address}
-                     onChange={(e) => setAddress(e.target.value)}
-                  />
-               </label>
-               <label>
-                  City
-                  <input
-                     type="text"
-                     value={city}
-                     onChange={(e) => setCity(e.target.value)}
-                  />
-               </label>
-               <label>
-                  State
-                  <input
-                     type="text"
-                     value={state}
-                     onChange={(e) => setState(e.target.value)}
-                  />
-               </label>
-               <label>
-                  Country
-                  <input
-                     type="text"
-                     value={country}
-                     onChange={(e) => setCountry(e.target.value)}
-                  />
-               </label>
-               <label>
-                  Name
-                  <input
-                     type="text"
-                     value={name}
-                     onChange={(e) => setName(e.target.value)}
-                  />
-               </label>
-               <label>
-                  Description
-                  <input
-                     type="text"
-                     value={description}
-                     onChange={(e) => setDescription(e.target.value)}
-                  />
-               </label>
-               <label>
-                  Price
-                  <input
-                     type="number"
-                     value={price}
-                     onChange={(e) => setPrice(e.target.value)}
-                  />
-               </label>
-               <label>
-                  Image
-                  <input
-                     type="url"
-                     value={imageUrl}
-                     onChange={(e) => setImageUrl(e.target.value)}
-                  />
-               </label>
-               <div className="button-container">
-                  <button
-                     className="cancel-create"
-                     onClick={onCancel}
-                  >
-                     Cancel
-                  </button>
+    const onCancel = () => {
+        setShowAdd(false);
+    }
 
-                  <button
-                     type="submit"
-                     className="submit-create"
-                     onSubmit={onSubmit}
-                  >
-                     Submit Hub
-                  </button>
-               </div>
-            </form>
-         </div>
-      </div>
-   );
+    return (
+        <div className="create-container">
+            <div className="create-header">
+                <h2>Create a New Tiny Hub</h2>
+            </div>
+            <div className="create-form">
+                <form onSubmit={onSubmit}>
+                    {submitted && errors.length > 0 && (
+                        <div className="errors">
+                            <ul>
+                                {errors.map((error, idx) => (
+                                    <li key={idx}>
+                                        {error}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                    <label>
+                        Address
+                        <input
+                            type="text"
+                            className="inputs"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        City
+                        <input
+                            type="text"
+                            className="inputs"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        State
+                        <input
+                            type="text"
+                            className="inputs"
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        Country
+                        <input
+                            type="text"
+                            className="inputs"
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        Name
+                        <input
+                            type="text"
+                            className="inputs"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        Description
+                        <input
+                            type="text"
+                            className="inputs"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        Price
+                        <input
+                            type="number"
+                            className="inputs"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        Image
+                        <input
+                            type="url"
+                            className="inputs"
+                            value={imageUrl}
+                            onChange={(e) => setImageUrl(e.target.value)}
+                        />
+                    </label>
+                    <div className="button-container">
+                        <button
+                            type="button"
+                            className="cancel-create"
+                            onClick={onCancel}
+                        >
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            className="submit-create"
+                            onSubmit={onSubmit}
+                        >
+                            Submit Hub
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
 }
 
 export default AddSpot;

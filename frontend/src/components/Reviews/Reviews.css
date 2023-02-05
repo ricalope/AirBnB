@@ -31,6 +31,7 @@
 
 .review-top {
    display: flex;
+   align-items: center;
    gap: 10px;
    justify-content: flex-start;
 }
@@ -54,4 +55,34 @@
 
 .remove {
    text-decoration: underline;
+}
+
+.reviews-back {
+    padding-left: 20px;
+}
+
+.back-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    color: #4b86b4;
+}
+
+.back-btn:hover {
+    color: #175482;
+}
+
+.del-rev-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.del-rev-btn:hover {
+    color: #4b86b4;
 }

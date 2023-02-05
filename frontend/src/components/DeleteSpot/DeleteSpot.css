@@ -3,7 +3,6 @@
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   height: 300px;
 }
 
 .delete-content {
@@ -34,4 +33,5 @@
 
 .haiku {
    color: grey;
+   font-weight: 500;
 }
